@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <taglib>
+        <name>webName</name>
+        <value>瓢虫web俱乐部</value>
+    </taglib>
+    <taglib>
+        <name>pageSize</name>
+        <value>10</value>
+    </taglib>
+</root>
