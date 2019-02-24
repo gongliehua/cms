@@ -64,12 +64,12 @@ class Parser {
     // 解析include语句
     public function parInclude()
     {
-        $_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
+        $_patten = '/\{include\s+file=(\"|\')([\w\.\-\/]+)(\"|\')\}/';
         if (preg_match($_patten,$this->_tpl,$_file)) {
-            if (!isset($_file[1]) || !file_exists($_file[1])) {
+            if (!isset($_file[2]) || !file_exists($_file[2])) {
                 exit('ERROR: 包含文件出错');
             }
-            $this->_tpl = preg_replace($_patten,"<?php include '$1'; ?>",$this->_tpl);
+            $this->_tpl = preg_replace($_patten,"<?php include '$2'; ?>",$this->_tpl);
         }
     }
 

@@ -1,0 +1,91 @@
+@charset "utf-8";
+body,h1,h2,h3,p,form,ul,li,dl,dt,dd {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #fff;
+    font-size: 12px;
+}
+ul {
+    list-style: none;
+}
+#top {
+    background: url("../images/admin_top_bg.gif");
+}
+#top h1 {
+    width: 150px;
+    height: 80px;
+    font-size: 12px;
+    background: url("../images/logosmall.png") no-repeat;
+    text-indent: -9999px;
+    float: left;
+}
+#top ul {
+    float: left;
+    padding: 47px 0 0 10px;
+}
+#top ul li {
+    padding: 0 0 0 5px;
+    float: left;
+}
+#top ul li a {
+    display: block;
+    width: 58px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background: url("../images/li_bg.png") no-repeat left bottom;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+#top ul li a.selected {
+    background: url("../images/li_bg.png") no-repeat right bottom;
+    color: #3b6ea5;
+}
+#top p {
+    float: right;
+    /*padding: 33px 20px 0 0;*/
+    line-height: 80px;
+    padding: 0 20px 0 0;
+    color: #fff;
+}
+#top p a {
+    color: #fff;
+    text-decoration: none;
+}
+#top p a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+#sidebar {
+    background: #f7fbfc url("../images/sidebar_right.png") repeat-y right;
+}
+#sidebar dl {
+    padding: 20px;
+    text-indent: 2px;
+}
+#sidebar dl dt {
+    font-size: 14px;
+    color: #3b6ea5;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+#sidebar dl dd {
+    height: 22px;
+    line-height: 22px;
+}
+#sidebar dl dd a {
+    color: #333;
+    text-decoration: none;
+}
+#sidebar dl dd a:hover {
+    text-decoration: underline;
+}
+#main {
+    background: #fff;
+}
