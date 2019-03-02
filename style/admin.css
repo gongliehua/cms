@@ -89,3 +89,63 @@ ul {
 #main {
     background: #fff;
 }
+#main div.map {
+    padding: 15px;
+    color: #333;
+}
+#main div.map strong {
+    color: green;
+}
+#main table {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+#main table.left {
+    text-align: left;
+}
+#main table tr {
+    background: #fff;
+}
+#main table tr:hover {
+    background: #ffc;
+}
+#main table th,#main table td {
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+}
+#main table th {
+    background: #eef3f7;
+    border-bottom: 1px solid #d5dfe8;
+    font-weight: normal;
+}
+#main table td {
+    border-bottom: 1px solid #eee;
+}
+#main a {
+    color: #3b6ea5;
+    text-decoration: none;
+}
+#main a:hover {
+    text-decoration: underline;
+}
+#main p.center {
+    text-align: center;
+    padding: 20px;
+}
+#main form input.text {
+    width: 220px;
+    height: 19px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+#main form select {
+    width: 100px;
+    height: 19px;
+    background: #fff;
+}
+#main form input.submit {
+    cursor: pointer;
+    margin: 0 0 0 47px;
+}

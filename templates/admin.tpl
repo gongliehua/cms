@@ -9,7 +9,7 @@
     <frame src="top.php" noresize="noresize" scrolling="no">
     <frameset cols="150,*" border="0">
         <frame src="sidebar.php" name="sidebar" noresize="noresize" scrolling="no">
-        <frame src="main.php" name="">
+        <frame src="main.php" name="main">
     </frameset>
 </frameset>
 </html>
