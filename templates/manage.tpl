@@ -51,7 +51,7 @@
     {/if}
 
     {if $add}
-    <form action="" method="post">
+    <form action="" method="post" name="add">
         <table cellspacing="0" class="left">
             <tr><td>用户名口：<input type="text" name="admin_user" class="text"> (* 不得小于2位,不得大于20位)</td></tr>
             <tr><td>密口口码：<input type="password" name="admin_pass" class="text"> (* 不得小于6位)</td></tr>
@@ -64,13 +64,13 @@
 
                             </select>
             </td></tr>
-            <tr><td><input type="submit" name="send" value="新增管理员" class="submit"> [ <a href="manage.php?action=show">返回列表</a> ]</td></tr>
+            <tr><td><input type="submit" name="send" value="新增管理员" onclick="return checkAddForm();" class="submit"> [ <a href="manage.php?action=show">返回列表</a> ]</td></tr>
         </table>
     </form>
     {/if}
 
     {if $update}
-    <form action="" method="post">
+    <form action="" method="post" name="update">
         <input type="hidden" name="id" value="{$id}">
         <input type="hidden" value="{$level}" id="level">
         <input type="hidden" name="pass" value="{$admin_pass}">
@@ -85,7 +85,7 @@
 
                     </select>
                 </td></tr>
-            <tr><td><input type="submit" name="send" value="修改管理员" class="submit"> [ <a href="manage.php?action=show">返回列表</a> ]</td></tr>
+            <tr><td><input type="submit" name="send" value="修改管理员" onclick="return checkUpdateForm();" class="submit"> [ <a href="manage.php?action=show">返回列表</a> ]</td></tr>
         </table>
     </form>
     {/if}

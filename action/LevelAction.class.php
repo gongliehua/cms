@@ -53,6 +53,7 @@ class LevelAction extends Action {
             if (Validate::checkLength($_POST['level_name'],20,'max')) Tool::alertBack('警告：等级名称不得大于20位');
             if (Validate::checkLength($_POST['level_info'],255,'max')) Tool::alertBack('警告：描述不得大于255位');
             $this->_model->level_name = $_POST['level_name'];
+            if ($this->_model->getOneLevel()) Tool::alertBack('警告：该等级名称已被占用');
             $this->_model->level_info = $_POST['level_info'];
             $this->_model->addLevel() ? Tool::alertLocation('恭喜你，新增等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，新增等级失败！');
         }
@@ -95,6 +96,9 @@ class LevelAction extends Action {
     {
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
+            $_manage = new ManageModel();
+            $_manage->level = $this->_model->id;
+            if ($_manage->getOneManage()) Tool::alertBack('警告：该等级已有管理员使用,无法删除');
             $this->_model->deleteLevel() ? Tool::alertLocation('恭喜你，删除等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，删除等级失败！');
         } else {
             Tool::alertBack('非法操作！');

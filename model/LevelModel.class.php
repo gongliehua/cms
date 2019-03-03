@@ -29,6 +29,8 @@ class LevelModel extends Model {
                         cms_level 
                     WHERE 
                         id='$this->id' 
+                    OR 
+                        level_name='$this->level_name' 
                     LIMIT 
                         1";
         return parent::one($_sql);

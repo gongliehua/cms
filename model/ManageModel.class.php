@@ -44,6 +44,10 @@ class ManageModel extends Model {
                         cms_manage 
                     WHERE 
                         id='$this->id' 
+                    OR 
+                        admin_user='$this->admin_user' 
+                    OR 
+                        level='$this->level' 
                     LIMIT 
                         1";
         return parent::one($_sql);
