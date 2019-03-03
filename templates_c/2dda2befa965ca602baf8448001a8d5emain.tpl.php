@@ -7,12 +7,9 @@
     <title></title>
     <link rel="stylesheet" href="../style/admin.css">
 </head>
-<body id="sidebar">
-    <dl>
-        <dt>管理首页</dt>
-        <dd><a href="../admin/main.php" target="main">后台首页</a></dd>
-        <dd><a href="../admin/manage.php?action=show" target="main">管理员管理</a></dd>
-        <dd><a href="../admin/level.php?action=show" target="main">等级管理</a></dd>
-    </dl>
+<body id="main">
+    <div class="map">
+        管理首页 &gt;&gt; 后台首页
+    </div>
 </body>
 </html>

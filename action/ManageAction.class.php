@@ -15,9 +15,9 @@ class ManageAction extends Action {
     private function _action()
     {
         // 业务流程控制器
-        $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'list';
+        $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'show';
         switch ($_GET['action']) {
-            case 'list':
+            case 'show':
                 $this->show();
                 break;
             case 'add':
@@ -37,26 +37,33 @@ class ManageAction extends Action {
     // 列表
     private function show()
     {
-        $this->_tpl->assign('list',true);
+        $this->_tpl->assign('show',true);
         $this->_tpl->assign('add',false);
         $this->_tpl->assign('update',false);
         $this->_tpl->assign('title','管理员列表');
-        $this->_tpl->assign('AllManage',$this->_model->getManage());
+        $this->_tpl->assign('AllManage',$this->_model->getAllManage());
     }
 
     // 添加
     private function add()
     {
         if (isset($_POST['send'])) {
+            if (Validate::checkNull($_POST['admin_user'])) Tool::alertBack('警告：用户名不得为空');
+            if (Validate::checkLength($_POST['admin_user'],2,'min')) Tool::alertBack('警告：用户名不得小于2位');
+            if (Validate::checkLength($_POST['admin_user'],20,'max')) Tool::alertBack('警告：用户名不得大于20位');
+            if (Validate::checkNull($_POST['admin_pass'])) Tool::alertBack('警告：密码不得为空');
+            if (Validate::checkLength($_POST['admin_pass'],6,'min')) Tool::alertBack('警告：密码不得小于6位');
+            if (Validate::checkEquals($_POST['admin_pass'],$_POST['admin_notpass'])) Tool::alertBack('警告：密码和密码确认必须一致');
             $this->_model->admin_user = $_POST['admin_user'];
             $this->_model->admin_pass = sha1($_POST['admin_pass']);
             $this->_model->level = $_POST['level'];
-            $this->_model->addManage() ? Tool::alertLocation('恭喜你，新增管理员成功！','manage.php?action=list') : Tool::alertBack('很遗憾，新增管理员失败！');
+            $this->_model->addManage() ? Tool::alertLocation('恭喜你，新增管理员成功！','manage.php?action=show') : Tool::alertBack('很遗憾，新增管理员失败！');
         }
-        $this->_tpl->assign('list',false);
+        $this->_tpl->assign('show',false);
         $this->_tpl->assign('add',true);
         $this->_tpl->assign('update',false);
         $this->_tpl->assign('title','新增管理员');
+        $this->_tpl->assign('AllLevel',$this->_model->getAllLevel());
     }
 
     // 修改
@@ -64,20 +71,28 @@ class ManageAction extends Action {
     {
         if (isset($_POST['send'])) {
             $this->_model->id = $_POST['id'];
+            if (trim($_POST['admin_pass']) == '') {
+                $this->_model->admin_pass = $_POST['pass'];
+            } else {
+                if (Validate::checkLength($_POST['admin_pass'],6,'min')) Tool::alertBack('警告：密码不得小于6位');
+                $this->_model->admin_pass = sha1($_POST['admin_pass']);
+            }
             $this->_model->admin_pass = sha1($_POST['admin_pass']);
             $this->_model->level = $_POST['level'];
-            $this->_model->updateManage() ? Tool::alertLocation('恭喜你，修改管理员成功！','manage.php?action=list') : Tool::alertBack('很遗憾，修改管理员失败！');
+            $this->_model->updateManage() ? Tool::alertLocation('恭喜你，修改管理员成功！','manage.php?action=show') : Tool::alertBack('很遗憾，修改管理员失败！');
         }
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            is_object($this->_model->getOneManage()) ? true : Tool::alertBack('您传值的ID有误！');
+            is_object($this->_model->getOneManage()) ? true : Tool::alertBack('管理员传值的ID有误！');
             $this->_tpl->assign('id',$this->_model->getOneManage()->id);
             $this->_tpl->assign('level',$this->_model->getOneManage()->level);
             $this->_tpl->assign('admin_user',$this->_model->getOneManage()->admin_user);
-            $this->_tpl->assign('list',false);
+            $this->_tpl->assign('admin_pass',$this->_model->getOneManage()->admin_pass);
+            $this->_tpl->assign('show',false);
             $this->_tpl->assign('add',false);
             $this->_tpl->assign('update',true);
             $this->_tpl->assign('title','修改管理员');
+            $this->_tpl->assign('AllLevel',$this->_model->getAllLevel());
         } else {
             Tool::alertBack('非法操作！');
         }
@@ -88,7 +103,7 @@ class ManageAction extends Action {
     {
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            $this->_model->deleteManage() ? Tool::alertLocation('恭喜你，删除管理员成功！','manage.php?action=list') : Tool::alertBack('很遗憾，删除管理员失败！');
+            $this->_model->deleteManage() ? Tool::alertLocation('恭喜你，删除管理员成功！','manage.php?action=show') : Tool::alertBack('很遗憾，删除管理员失败！');
         } else {
             Tool::alertBack('非法操作！');
         }

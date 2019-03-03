@@ -19,11 +19,27 @@ class ManageModel extends Model {
         return $this->$_key;
     }
 
+    // 查询所有等级
+    public function getAllLevel()
+    {
+        $_sql = "SELECT 
+                        id,
+                        level_name 
+                    FROM 
+                        cms_level 
+                    ORDER BY 
+                        id ASC";
+        return parent::all($_sql);
+    }
+
     // 查询单个管理员
     public function getOneManage()
     {
         $_sql = "SELECT 
-                        id,admin_user,level 
+                        id,
+                        admin_user,
+                        admin_pass,
+                        level 
                     FROM 
                         cms_manage 
                     WHERE 
@@ -34,7 +50,7 @@ class ManageModel extends Model {
     }
 
     // 查询所有管理员
-    public function getManage()
+    public function getAllManage()
     {
         $_sql = "SELECT 
                         m.id,
@@ -48,9 +64,9 @@ class ManageModel extends Model {
                         cms_manage m,
                         cms_level l
                     WHERE
-                        l.level = m.level
+                        l.id = m.level
                     ORDER BY
-                        id ASC
+                        m.id ASC
                     LIMIT
                         0,20";
         return parent::all($_sql);
@@ -81,7 +97,7 @@ class ManageModel extends Model {
         $_sql = "UPDATE 
                         cms_manage 
                     SET 
-                        admin_pass='$this->admin_pass', 
+                        admin_pass='$this->admin_pass',
                         level='$this->level' 
                     WHERE 
                         id='$this->id' 
