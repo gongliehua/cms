@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    {include file="header.tpl"}
+    <?php $this->create('header.tpl'); ?>
     <div id="user">
         <h2>会员信息</h2>
         <form action="">
@@ -201,6 +201,6 @@
             </ul>
         </div>
     </div>
-    {include file='footer.tpl'}
+    <?php $this->create('footer.tpl'); ?>
 </body>
 </html>

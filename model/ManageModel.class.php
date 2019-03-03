@@ -1,7 +1,7 @@
 <?php
 
 // 管理员实体类
-class Manage extends Model {
+class ManageModel extends Model {
     private $id;
     private $admin_user;
     private $admin_pass;
