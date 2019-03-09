@@ -176,3 +176,28 @@ ul,ol {
     color: #fff;
     background: #3b6ea5;
 }
+#page {
+    text-align: center;
+    padding: 10px;
+}
+#page a {
+    border: 1px solid #666;
+    padding: 2px 5px;
+    margin: 0 2px;
+}
+#page a:hover,#page span.me {
+    color: #fff;
+    border: 1px solid #000;
+    background: #000;
+    text-decoration: none;
+}
+#page span.disabled {
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    margin: 0 2px;
+    color: #ccc;
+}
+#page span.me {
+    padding: 2px 5px;
+    margin: 0 2px;
+}

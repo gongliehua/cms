@@ -3,6 +3,16 @@
 // 模型基类
 class model {
 
+    // 查找总记录模型
+    protected function total($_sql)
+    {
+        $_db = DB::getDB();
+        $_result = $_db->query($_sql);
+        $_total = $_result->fetch_row();
+        DB::unDB($_result,$_db);
+        return $_total[0];
+    }
+
     // 查找单个数据模型
     protected function one($_sql)
     {

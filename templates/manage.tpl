@@ -48,6 +48,7 @@
         {/foreach}
 
     </table>
+    <div id="page">{$page}</div>
     {/if}
 
     {if $add}

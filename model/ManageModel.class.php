@@ -6,6 +6,7 @@ class ManageModel extends Model {
     private $admin_user;
     private $admin_pass;
     private $level;
+    private $limit;
 
     // 拦截器
     public function __set($_key,$_value)
@@ -19,17 +20,14 @@ class ManageModel extends Model {
         return $this->$_key;
     }
 
-    // 查询所有等级
-    public function getAllLevel()
+    // 获取管理员总记录
+    public function getManageTotal()
     {
         $_sql = "SELECT 
-                        id,
-                        level_name 
+                        COUNT(*) 
                     FROM 
-                        cms_level 
-                    ORDER BY 
-                        id ASC";
-        return parent::all($_sql);
+                        cms_manage";
+        return parent::total($_sql);
     }
 
     // 查询单个管理员
@@ -71,8 +69,7 @@ class ManageModel extends Model {
                         l.id = m.level
                     ORDER BY
                         m.id ASC
-                    LIMIT
-                        0,20";
+                    $this->limit";
         return parent::all($_sql);
     }
 

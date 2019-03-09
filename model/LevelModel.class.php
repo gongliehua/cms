@@ -46,9 +46,7 @@ class LevelModel extends Model {
                     FROM 
                         cms_level 
                     ORDER BY
-                        id ASC
-                    LIMIT
-                        0,20";
+                        id ASC";
         return parent::all($_sql);
     }
 

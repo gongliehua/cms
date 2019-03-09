@@ -37,11 +37,14 @@ class ManageAction extends Action {
     // 列表
     private function show()
     {
+        $_page = new Page($this->_model->getManageTotal(),PAGE_SIZE);
+        $this->_model->limit = $_page->limit;
         $this->_tpl->assign('show',true);
         $this->_tpl->assign('add',false);
         $this->_tpl->assign('update',false);
         $this->_tpl->assign('title','管理员列表');
         $this->_tpl->assign('AllManage',$this->_model->getAllManage());
+        $this->_tpl->assign('page',$_page->showPage());
     }
 
     // 添加
@@ -64,7 +67,8 @@ class ManageAction extends Action {
         $this->_tpl->assign('add',true);
         $this->_tpl->assign('update',false);
         $this->_tpl->assign('title','新增管理员');
-        $this->_tpl->assign('AllLevel',$this->_model->getAllLevel());
+        $_level = new LevelModel();
+        $this->_tpl->assign('AllLevel',$_level->getAllLevel());
     }
 
     // 修改
@@ -93,7 +97,8 @@ class ManageAction extends Action {
             $this->_tpl->assign('add',false);
             $this->_tpl->assign('update',true);
             $this->_tpl->assign('title','修改管理员');
-            $this->_tpl->assign('AllLevel',$this->_model->getAllLevel());
+            $_level = new LevelModel();
+            $this->_tpl->assign('AllLevel',$_level->getAllLevel());
         } else {
             Tool::alertBack('非法操作！');
         }

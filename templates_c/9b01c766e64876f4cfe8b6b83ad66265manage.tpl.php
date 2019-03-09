@@ -48,6 +48,7 @@
         <?php } ?>
 
     </table>
+    <div id="page"><?php echo $this->_vars['page']; ?></div>
     <?php } ?>
 
     <?php if ($this->_vars['add']) { ?>
