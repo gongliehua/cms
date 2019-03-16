@@ -5,6 +5,7 @@ class LevelAction extends Action {
     // 初始化
     public function __construct(&$_tpl)
     {
+        Validate::checkSession();
         $_model = new LevelModel();
         parent::__construct($_tpl, $_model);
         $this->_action();

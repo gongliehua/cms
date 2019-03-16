@@ -16,6 +16,8 @@ class ManageAction extends Action {
     {
         // 业务流程控制器
         $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'show';
+        if ($_GET['action'] == 'login') $this->login();
+        Validate::checkSession();
         switch ($_GET['action']) {
             case 'show':
                 $this->show();
@@ -29,9 +31,43 @@ class ManageAction extends Action {
             case 'delete':
                 $this->delete();
                 break;
+            case 'logout':
+                $this->logout();
+                break;
             default:
                 Tool::alertBack('非法操作！');
         }
+    }
+
+    // 登录
+    private function login()
+    {
+        if (isset($_POST['send'])) {
+            if (Validate::checkLength($_POST['code'],4,'equals')) Tool::alertBack('警告：验证码是4位');
+            if (Validate::checkEquals(strtolower($_POST['code']),$_SESSION['code'])) Tool::alertBack('警告：验证码不正确');
+            if (Validate::checkNull($_POST['admin_user'])) Tool::alertBack('警告：用户名不得为空');
+            if (Validate::checkLength($_POST['admin_user'],2,'min')) Tool::alertBack('警告：用户名不得小于2位');
+            if (Validate::checkLength($_POST['admin_user'],20,'max')) Tool::alertBack('警告：用户名不得大于20位');
+            if (Validate::checkNull($_POST['admin_pass'])) Tool::alertBack('警告：密码不得为空');
+            if (Validate::checkLength($_POST['admin_pass'],6,'min')) Tool::alertBack('警告：密码不得小于6位');
+            $this->_model->admin_user = $_POST['admin_user'];
+            $this->_model->admin_pass = sha1($_POST['admin_pass']);
+            $_login = $this->_model->getLoginManage();
+            if ($_login) {
+                $_SESSION['admin']['admin_user'] = $_login->admin_user;
+                $_SESSION['admin']['level_name'] = $_login->level_name;
+                Tool::alertLocation(null,'admin.php');
+            } else {
+                Tool::alertBack('警告：用户名或密码错误');
+            }
+        }
+    }
+
+    // 退出
+    private function logout()
+    {
+        Tool::unSession();
+        Tool::alertLocation(null,'admin_login.php');
     }
 
     // 列表

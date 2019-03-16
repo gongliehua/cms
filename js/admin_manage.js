@@ -29,7 +29,7 @@ function checkAddForm() {
         fm.admin_user.focus();
         return false;
     }
-    if (fm.admin_pass.value == '' || fm.admin_pass.length < 6) {
+    if (fm.admin_pass.value == '' || fm.admin_pass.value.length < 6) {
         alert('警告：密码不得为空并且不得小于6位');
         fm.admin_pass.focus();
         return false;

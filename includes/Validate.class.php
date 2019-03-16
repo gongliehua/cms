@@ -18,6 +18,9 @@ class Validate {
         } elseif ($_flag == 'max') {
             if (mb_strlen(trim($_data),'utf-8') > $_length) return true;
             return false;
+        } elseif ($_flag == 'equals') {
+            if (mb_strlen(trim($_data),'utf-8') != $_length) return true;
+            return false;
         } else {
             Tool::alertBack('ERROR：参数错误，必须是min,max');
         }
@@ -28,5 +31,11 @@ class Validate {
     {
         if (trim($_data) != trim($_other)) return true;
         return false;
+    }
+
+    // session验证
+    public static function checkSession()
+    {
+        if (!isset($_SESSION['admin'])) Tool::alertBack('警告：非法登录');
     }
 }

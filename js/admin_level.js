@@ -29,7 +29,7 @@ function checkForm() {
         fm.level_name.focus();
         return false;
     }
-    if (fm.level_info.length > 255) {
+    if (fm.level_info.value.length > 255) {
         alert('警告：描述不得大于255位');
         fm.level_info.focus();
         return false;
