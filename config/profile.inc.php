@@ -6,7 +6,8 @@ define('DB_USER','root');
 define('DB_PASS','root');
 define('DB_NAME','cms');
 
-// 分页配置
+// 系统配置
+define('GPC',get_magic_quotes_gpc());
 define('PAGE_SIZE',10);
 
 // 模板配置

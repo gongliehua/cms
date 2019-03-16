@@ -20,7 +20,7 @@ class model {
         $_result = $_db->query($_sql);
         $_objects = $_result->fetch_object();
         DB::unDB($_result,$_db);
-        return $_objects;
+        return Tool::htmlString($_objects);
     }
 
     // 查找多个数据模型
@@ -33,7 +33,7 @@ class model {
             $_html[] = $_objects;
         }
         DB::unDB($_result,$_db);
-        return $_html;
+        return Tool::htmlString($_html);
     }
 
     // 增删修改
