@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.7.17)
-# Date: 2019-04-24 09:21:13
+# Date: 2019-04-25 15:46:46
 # Generator: MySQL-Front 5.3  (Build 4.234)
 
 /*!40101 SET NAMES utf8 */;
@@ -61,11 +61,12 @@ CREATE TABLE `cms_nav` (
   `pid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
   `sort` int(11) unsigned DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='导航表';
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='导航表';
 
 #
 # Data for table "cms_nav"
 #
 
 /*!40000 ALTER TABLE `cms_nav` DISABLE KEYS */;
+INSERT INTO `cms_nav` VALUES (1,'军事动态',NULL,0,NULL),(2,'八卦娱乐',NULL,0,NULL),(3,'时尚女人',NULL,0,NULL),(4,'科技频道',NULL,0,NULL),(5,'智能手机',NULL,0,NULL),(6,'美容护发',NULL,0,NULL),(7,'热门汽车',NULL,0,NULL),(8,'房产家居',NULL,0,NULL),(9,'读书教育',NULL,0,NULL),(10,'房产家居',NULL,0,NULL),(11,'股票基金',NULL,0,NULL);
 /*!40000 ALTER TABLE `cms_nav` ENABLE KEYS */;

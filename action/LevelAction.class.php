@@ -5,15 +5,12 @@ class LevelAction extends Action {
     // 初始化
     public function __construct(&$_tpl)
     {
-        Validate::checkSession();
         $_model = new LevelModel();
         parent::__construct($_tpl, $_model);
-        $this->_action();
-        $this->_tpl->display('level.tpl');
     }
 
     // 流程控制器
-    private function _action()
+    public function _action()
     {
         // 业务流程控制器
         $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'show';

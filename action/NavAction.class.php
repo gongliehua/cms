@@ -5,15 +5,12 @@ class NavAction extends Action {
     // 初始化
     public function __construct(&$_tpl)
     {
-        Validate::checkSession();
         $_model = new NavModel();
         parent::__construct($_tpl, $_model);
-        $this->_action();
-        $this->_tpl->display('nav.tpl');
     }
 
     // 流程控制器
-    private function _action()
+    public function _action()
     {
         // 业务流程控制器
         $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'show';
@@ -39,6 +36,12 @@ class NavAction extends Action {
             default:
                 Tool::alertBack('非法操作！');
         }
+    }
+
+    // 前台
+    public function showFront()
+    {
+        $this->_tpl->assign('FrontNav',$this->_model->getFrontNav());
     }
 
     // addChild

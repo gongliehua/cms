@@ -7,12 +7,10 @@ class ManageAction extends Action {
     {
         $_model = new ManageModel();
         parent::__construct($_tpl, $_model);
-        $this->_action();
-        $this->_tpl->display('manage.tpl');
     }
 
     // 流程控制器
-    private function _action()
+    public function _action()
     {
         // 业务流程控制器
         $_GET['action'] = isset($_GET['action']) ? $_GET['action'] : 'show';

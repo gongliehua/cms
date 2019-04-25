@@ -9,17 +9,11 @@
 <div id="nav">
     <ul>
         <li><a href="#">首页</a></li>
-        <li><a href="#">军事动态</a></li>
-        <li><a href="#">八卦娱乐</a></li>
-        <li><a href="#">时尚女人</a></li>
-        <li><a href="#">科技频道</a></li>
-        <li><a href="#">智能手机</a></li>
-        <li><a href="#">美容护发</a></li>
-        <li><a href="#">热门汽车</a></li>
-        <li><a href="#">房产家居</a></li>
-        <li><a href="#">读书教育</a></li>
-        <li><a href="#">房产家居</a></li>
-        <li><a href="#">股票基金</a></li>
+        {if $FrontNav}
+        {foreach $FrontNav(key,value)}
+            <li><a href="#{@value->id}">{@value->nav_name}</a></li>
+        {/foreach}
+        {/if}
     </ul>
 </div>
 <div id="search">

@@ -21,6 +21,22 @@ class NavModel extends Model {
         return $this->$_key;
     }
 
+    // 前台显示的指定导航
+    public function getFrontNav()
+    {
+        $_sql = "SELECT 
+                        id,
+                        nav_name,
+                        nav_info
+                    FROM 
+                        cms_nav 
+                    WHERE 
+                        pid=0 
+                    LIMIT  
+                        0,".NAV_SIZE;
+        return parent::all($_sql);
+    }
+
     // 查询总记录
     public function getNavTotal()
     {
