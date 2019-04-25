@@ -124,11 +124,12 @@ class ManageAction extends Action {
         }
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            is_object($this->_model->getOneManage()) ? true : Tool::alertBack('管理员传值的ID有误！');
-            $this->_tpl->assign('id',$this->_model->getOneManage()->id);
-            $this->_tpl->assign('level',$this->_model->getOneManage()->level);
-            $this->_tpl->assign('admin_user',$this->_model->getOneManage()->admin_user);
-            $this->_tpl->assign('admin_pass',$this->_model->getOneManage()->admin_pass);
+            $_manage = $this->_model->getOneManage();
+            is_object($_manage) ? true : Tool::alertBack('管理员传值的ID有误！');
+            $this->_tpl->assign('id',$_manage->id);
+            $this->_tpl->assign('level',$_manage->level);
+            $this->_tpl->assign('admin_user',$_manage->admin_user);
+            $this->_tpl->assign('admin_pass',$_manage->admin_pass);
             $this->_tpl->assign('show',false);
             $this->_tpl->assign('add',false);
             $this->_tpl->assign('update',true);

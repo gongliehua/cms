@@ -79,10 +79,11 @@ class LevelAction extends Action {
         }
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            is_object($this->_model->getOneLevel()) ? true : Tool::alertBack('等级传值的ID有误！');
-            $this->_tpl->assign('id',$this->_model->getOneLevel()->id);
-            $this->_tpl->assign('level_name',$this->_model->getOneLevel()->level_name);
-            $this->_tpl->assign('level_info',$this->_model->getOneLevel()->level_info);
+            $_level = $this->_model->getOneLevel();
+            is_object($_level) ? true : Tool::alertBack('等级传值的ID有误！');
+            $this->_tpl->assign('id',$_level->id);
+            $this->_tpl->assign('level_name',$_level->level_name);
+            $this->_tpl->assign('level_info',$_level->level_info);
             $this->_tpl->assign('show',false);
             $this->_tpl->assign('add',false);
             $this->_tpl->assign('update',true);
