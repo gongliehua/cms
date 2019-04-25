@@ -1,14 +1,4 @@
 window.onload = function() {
-    var level = document.getElementById('level');
-    var options = document.getElementsByTagName('option');
-    if (level) {
-        for (var i=0; i<options.length; i++) {
-            if (options[i].value == level.value) {
-                options[i].setAttribute('selected','selected');
-            }
-        }
-    }
-
     var title = document.getElementById('title');
     var ol = document.getElementsByTagName('ol');
     var a = ol[0].getElementsByTagName('a');

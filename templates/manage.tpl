@@ -35,6 +35,7 @@
             <th>操作</th>
         </tr>
 
+        {if $AllManage}
         {foreach $AllManage(key,value)}
             <tr>
                 <td>{@value->id}</td>
@@ -46,9 +47,16 @@
                 <td><a href="manage.php?action=update&id={@value->id}">编辑</a> <a href="manage.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个管理员吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
+        {else}
+            <tr>
+                <td colspan="7">对不起，没有任何数据</td>
+            </tr>
+        {/if}
 
     </table>
+    {if $AllManage}
     <div id="page">{$page}</div>
+    {/if}
     {/if}
 
     {if $add}
@@ -59,11 +67,15 @@
             <tr><td>确认密码：<input type="password" name="admin_notpass" class="text"> (* 必须同密码一致)</td></tr>
             <tr><td>等口口级：<select name="level">
 
+                        {if $AllLevel}
                             {foreach $AllLevel(key,value)}
                             <option value="{@value->id}">{@value->level_name}</option>
                             {/foreach}
+                        {else}
+                            <option value="1">暂无数据</option>
+                        {/if}
 
-                            </select>
+                    </select>
             </td></tr>
             <tr><td><input type="submit" name="send" value="新增管理员" onclick="return checkAddForm();" class="submit"> [ <a href="manage.php?action=show">返回列表</a> ]</td></tr>
         </table>
@@ -80,9 +92,13 @@
             <tr><td>密口码：<input type="password" name="admin_pass" class="text"> (* 留空则不修改)</td></tr>
             <tr><td>等口级：<select name="level">
 
-                        {foreach $AllLevel(key,value)}
-                        <option value="{@value->id}">{@value->level_name}</option>
-                        {/foreach}
+                        {if $AllLevel}
+                            {foreach $AllLevel(key,value)}
+                            <option value="{@value->id}">{@value->level_name}</option>
+                            {/foreach}
+                        {else}
+                            <option value="1">暂无数据</option>
+                        {/if}
 
                     </select>
                 </td></tr>

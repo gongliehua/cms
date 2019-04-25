@@ -18,7 +18,7 @@
         <li><a href="nav.php?action=add">新增导航</a></li>
 
         {if $update}
-        <li><a href="nav.php?action=update&id=">修改导航</a></li>
+        <li><a href="nav.php?action=update&id={$id}">修改导航</a></li>
         {/if}
 
     </ol>
@@ -42,11 +42,15 @@
             </tr>
         {/foreach}
         {else}
-            <td colspan="4">对不起，没有任何数据</td>
+            <tr>
+                <td colspan="4">对不起，没有任何数据</td>
+            </tr>
         {/if}
 
     </table>
+    {if $AllNav}
     <div id="page">{$page}</div>
+    {/if}
     {/if}
 
 </body>

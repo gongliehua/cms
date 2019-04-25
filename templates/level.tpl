@@ -32,6 +32,7 @@
             <th>操作</th>
         </tr>
 
+        {if $AllLevel}
         {foreach $AllLevel(key,value)}
             <tr>
                 <td>{@value->id}</td>
@@ -40,6 +41,11 @@
                 <td><a href="level.php?action=update&id={@value->id}">编辑</a> <a href="level.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个等级吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
+        {else}
+            <tr>
+                <td colspan="4">对不起，没有任何数据</td>
+            </tr>
+        {/if}
 
     </table>
     {/if}
