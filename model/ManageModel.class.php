@@ -6,6 +6,7 @@ class ManageModel extends Model {
     private $admin_user;
     private $admin_pass;
     private $level;
+    private $last_ip;
     private $limit;
 
     // 拦截器
@@ -18,6 +19,20 @@ class ManageModel extends Model {
     public function __get($_key)
     {
         return $this->$_key;
+    }
+
+    // 设置管理员登录统计次数、IP、时间
+    public function setLoginCount() {
+        $_sql = "UPDATE 
+                        cms_manage 
+                    SET 
+                        login_count=login_count+1,
+                        last_ip='$this->last_ip',
+                        last_time=NOW() 
+                    WHERE 
+                        admin_user='$this->admin_user' 
+                    LIMIT 1";
+        return parent::aud($_sql);
     }
 
     // 获取管理员总记录
