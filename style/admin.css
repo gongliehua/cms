@@ -11,7 +11,7 @@ ul,ol {
     list-style: none;
 }
 #top {
-    background: url("../images/admin_top_bg.gif");
+    background: #3a6da4 url("../images/admin_top_bg.gif");
 }
 #top h1 {
     width: 150px;
@@ -47,7 +47,6 @@ ul,ol {
 }
 #top p {
     float: right;
-    /*padding: 33px 20px 0 0;*/
     line-height: 80px;
     padding: 0 20px 0 0;
     color: #fff;
