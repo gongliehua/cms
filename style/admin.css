@@ -97,8 +97,16 @@ ul,ol {
 }
 #main table {
     width: 95%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+}
+#main table table {
+    width: 100%;
+    text-align: left;
+}
+#main table.cke_dialog {
+    width: auto;
 }
 #main table.left {
     text-align: left;
@@ -108,6 +116,15 @@ ul,ol {
 }
 #main table tr:hover {
     background: #ffc;
+}
+#main table tr.ckeditor {
+    background: none;
+}
+#main table tr.ckeditor tr {
+    background: none;
+}
+#main table.cke_dialog tr {
+    background: none;
 }
 #main table th,#main table td {
     height: 30px;

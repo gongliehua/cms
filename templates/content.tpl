@@ -7,6 +7,7 @@
     <title></title>
     <link rel="stylesheet" href="../style/admin.css">
     <script type="text/javascript" src="../js/admin_level.js"></script>
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body id="main">
     <div class="map">
@@ -45,7 +46,7 @@
             <tr><td>文章来源: <input type="text" name="source" class="text"></td></tr>
             <tr><td>作口口者: <input type="text" name="author" class="text"></td></tr>
             <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10"></textarea></td></tr>
-            <tr><td><textarea name="content" style="width: 100%">详细内容: 这里后面改成在线编辑器</textarea></td></tr>
+            <tr class="ckeditor"><td><textarea id="Textarea1" class="ckeditor" name="content"></textarea></td></tr>
             <tr><td>评论选项:
                 <input type="radio" name="comment" value="1" checked="checked">允许评论
                 <input type="radio" name="comment" value="0">禁止评论
