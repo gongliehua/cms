@@ -3,6 +3,15 @@
 // 模型基类
 class model {
 
+    // 执行多条sql语句
+    public function multi($_sql)
+    {
+        $_db = DB::getDB();
+        $_result = $_db->multi_query($_sql);
+        DB::unDB($_result, $_db);
+        return true;
+    }
+
     // 获取下一个增值ID
     public function nextId($_table)
     {

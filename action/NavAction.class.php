@@ -18,6 +18,9 @@ class NavAction extends Action {
             case 'show':
                 $this->show();
                 break;
+            case 'sort':
+                $this->sort();
+                break;
             case 'add':
                 $this->add();
                 break;
@@ -42,6 +45,16 @@ class NavAction extends Action {
     public function showFront()
     {
         $this->_tpl->assign('FrontNav',$this->_model->getFrontNav());
+    }
+
+    // 后台排序
+    public function sort()
+    {
+        if (isset($_POST['send'])) {
+            $this->_model->sort = $_POST['sort'];
+            $this->_model->setNavSort();
+        }
+        Tool::alertLocation(null, 'nav.php?action=show');
     }
 
     // addChild

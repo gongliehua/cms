@@ -21,6 +21,17 @@ class NavModel extends Model {
         return $this->$_key;
     }
 
+    // 排序
+    public function setNavSort()
+    {
+        $_sql = '';
+        foreach ($this->sort as $_key => $_value) {
+            if (!(is_numeric($_value) && strpos($_value, '.') === false)) continue;
+            $_sql .= "UPDATE cms_nav SET sort='$_value' WHERE id='$_key';";
+        }
+       return parent::multi($_sql);
+    }
+
     // 前台显示的指定导航
     public function getFrontNav()
     {
@@ -32,6 +43,8 @@ class NavModel extends Model {
                         cms_nav 
                     WHERE 
                         pid=0 
+                    ORDER BY 
+                        sort ASC 
                     LIMIT  
                         0,".NAV_SIZE;
         return parent::all($_sql);
@@ -67,11 +80,14 @@ class NavModel extends Model {
         $_sql = "SELECT 
                         id,
                         nav_name,
-                        nav_info
+                        nav_info,
+                        sort
                     FROM 
                         cms_nav 
                     WHERE 
                         pid=0 
+                    ORDER BY 
+                        sort ASC 
                     $this->limit";
         return parent::all($_sql);
     }
@@ -82,11 +98,14 @@ class NavModel extends Model {
         $_sql = "SELECT 
                         id,
                         nav_name,
-                        nav_info
+                        nav_info,
+                        sort
                     FROM 
                         cms_nav 
                     WHERE 
                         pid=$this->id 
+                    ORDER BY 
+                        sort ASC 
                     $this->limit";
         return parent::all($_sql);
     }

@@ -43,7 +43,12 @@ class Tool {
     // 数据输入过滤
     public static function mysqlString($_data)
     {
-        return !GPC ? addslashes($_data) : $_data;
+        if (is_array($_data)) {
+            $_result = array_map(array('Tool', 'mysqlString'), $_data);
+        } else {
+            $_result= !GPC ? addslashes($_data) : $_data;
+        }
+        return $_result;
     }
 
     // 清理sesson

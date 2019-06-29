@@ -32,6 +32,7 @@
     </ol>
 
     {if $show}
+    <form action="nav.php?action=sort" method="post">
     <table cellspacing="0">
         <tr>
             <th>编号</th>
@@ -39,6 +40,7 @@
             <th>描述</th>
             <th>子类</th>
             <th>操作</th>
+            <th>排序</th>
         </tr>
 
         {if $AllNav}
@@ -49,15 +51,18 @@
                 <td>{@value->nav_info}</td>
                 <td><a href="nav.php?action=showChild&id={@value->id}">查看</a> | <a href="nav.php?action=addChild&id={@value->id}">增加子类</a></td>
                 <td><a href="nav.php?action=update&id={@value->id}">编辑</a> <a href="nav.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个导航吗？') ? true : false;">删除</a></td>
+                <td><input type="text" name="sort[{@value->id}]" value="{@value->sort}" class="text sort"></td>
             </tr>
         {/foreach}
+        <tr><td colspan="5"></td><td><input type="submit" name="send" value="排序" style="cursor:pointer;"></td></tr>
         {else}
             <tr>
-                <td colspan="5">对不起，没有任何数据</td>
+                <td colspan="6">对不起，没有任何数据</td>
             </tr>
         {/if}
 
     </table>
+    </form>
     {if $AllNav}
     <div id="page">{$page}</div>
     {/if}
@@ -97,12 +102,14 @@
     {/if}
 
     {if $showChild}
+    <form action="nav.php?action=sort" method="post">
         <table cellspacing="0">
             <tr>
                 <th>编号</th>
                 <th>导航名称</th>
                 <th>描述</th>
                 <th>操作</th>
+                <th>排序</th>
             </tr>
 
             {if $AllChildNav}
@@ -112,21 +119,24 @@
                         <td>{@value->nav_name}</td>
                         <td>{@value->nav_info}</td>
                         <td><a href="nav.php?action=update&id={@value->id}">编辑</a> <a href="nav.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个导航吗？') ? true : false;">删除</a></td>
+                        <td><input type="text" name="sort[{@value->id}]" value="{@value->sort}" class="text sort"></td>
                     </tr>
                 {/foreach}
+                <tr><td colspan="4"></td><td><input type="submit" name="send" value="排序" style="cursor:pointer;"></td></tr>
             {else}
                 <tr>
-                    <td colspan="4">对不起，没有任何数据</td>
+                    <td colspan="5">对不起，没有任何数据</td>
                 </tr>
             {/if}
             <tr>
-                <td colspan="4">本类隶属: <strong>{$prev_name}</strong> [ <a href="nav.php?action=addChild&id={$id}">增加本类</a> ] [ <a href="nav.php?action=show">返回列表</a> ]</td>
+                <td colspan="5">本类隶属: <strong>{$prev_name}</strong> [ <a href="nav.php?action=addChild&id={$id}">增加本类</a> ] [ <a href="nav.php?action=show">返回列表</a> ]</td>
             </tr>
 
         </table>
         {if $AllChildNav}
             <div id="page">{$page}</div>
         {/if}
+    </form>
     {/if}
 
 </body>
