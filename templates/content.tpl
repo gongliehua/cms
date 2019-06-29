@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="../style/admin.css">
-    <script type="text/javascript" src="../js/admin_level.js"></script>
+    <script type="text/javascript" src="../js/admin_content.js"></script>
     <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body id="main">
@@ -42,7 +42,7 @@
             </td></tr>
             <tr><td>标口口签: <input type="text" name="tag" class="text"></td></tr>
             <tr><td>关键字口: <input type="text" name="keyword" class="text"></td></tr>
-            <tr><td>略缩图口: <input type="text" name="thumbnail" class="text"></td></tr>
+            <tr><td>略缩图口: <input type="text" name="thumbnail" class="text"> <input type="button" value="上次缩略图" onclick="centerWindow('../templates/upfile.html','upfile','400','100')"></td></tr>
             <tr><td>文章来源: <input type="text" name="source" class="text"></td></tr>
             <tr><td>作口口者: <input type="text" name="author" class="text"></td></tr>
             <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10"></textarea></td></tr>
