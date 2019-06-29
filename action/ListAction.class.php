@@ -16,8 +16,13 @@ class ListAction extends Action {
             $_nav->id = $_GET['id'];
             if ($_result = $_nav->getOneNav()) {
                 // 主导航
-                $_navMain = '<a href="/list.php?id='.$_result->id.'">'.$_result->nav_name.'</a>';
-                $this->_tpl->assign('nav', $_navMain);
+                if ($_result->iid) {
+                    $_nav1 = '<a href="/list.php?id='. $_result->iid.'">'.$_result->nnav_name.'</a> &gt; ';
+                } else {
+                    $_nav1 = '';
+                }
+                $_nav2 = '<a href="/list.php?id='.$_result->id.'">'.$_result->nav_name.'</a>';
+                $this->_tpl->assign('nav', $_nav1.$_nav2);
                 // 子导航
                 $this->_tpl->assign('childNav', $_nav->getAllChildFrontNav());
             } else {

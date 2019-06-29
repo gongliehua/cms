@@ -40,6 +40,10 @@ class Templates {
         if (!file_exists($_tplFile)) {
             exit('ERROR: 模板文件不存在');
         }
+        // 是否加入参数
+        if (!empty($_SERVER['QUERY_STRING'])) {
+            $_file .= $_SERVER['QUERY_STRING'];
+        }
         // 生成编译文件
         $_parFile = TPL_C_DIR.md5($_file).$_file.'.php';
         if (!file_exists($_parFile) || filemtime($_parFile) < filemtime($_tplFile)) {

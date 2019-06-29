@@ -1,5 +1,5 @@
-﻿# Host: localhost  (Version: 5.7.17)
-# Date: 2019-04-25 15:46:46
+﻿# Host: localhost  (Version: 5.5.53)
+# Date: 2019-06-29 18:31:03
 # Generator: MySQL-Front 5.3  (Build 4.234)
 
 /*!40101 SET NAMES utf8 */;
@@ -35,7 +35,7 @@ CREATE TABLE `cms_manage` (
   `admin_pass` char(40) NOT NULL DEFAULT '' COMMENT '密码',
   `level` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '等级',
   `login_count` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '登录次数',
-  `last_ip` varchar(20) NOT NULL DEFAULT '000.000.000.000' COMMENT '登录IP',
+  `last_ip` varchar(20) NOT NULL DEFAULT '' COMMENT '登录IP',
   `last_time` datetime DEFAULT NULL COMMENT '登录时间',
   `reg_time` datetime DEFAULT NULL COMMENT '注册时间',
   PRIMARY KEY (`id`)
@@ -46,7 +46,7 @@ CREATE TABLE `cms_manage` (
 #
 
 /*!40000 ALTER TABLE `cms_manage` DISABLE KEYS */;
-INSERT INTO `cms_manage` VALUES (1,'admin','7c4a8d09ca3762af61e59520943dc26494f8941b',6,0,'000.000.000.000',NULL,NULL),(2,'user','7c4a8d09ca3762af61e59520943dc26494f8941b',5,0,'000.000.000.000',NULL,NULL),(3,'guest','7c4a8d09ca3762af61e59520943dc26494f8941b',1,0,'000.000.000.000',NULL,NULL);
+INSERT INTO `cms_manage` VALUES (1,'admin','7c4a8d09ca3762af61e59520943dc26494f8941b',6,0,'',NULL,NULL),(2,'user','7c4a8d09ca3762af61e59520943dc26494f8941b',5,0,'',NULL,NULL),(3,'guest','7c4a8d09ca3762af61e59520943dc26494f8941b',1,0,'',NULL,NULL);
 /*!40000 ALTER TABLE `cms_manage` ENABLE KEYS */;
 
 #

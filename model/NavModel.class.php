@@ -131,15 +131,21 @@ class NavModel extends Model {
     public function getOneNav()
     {
         $_sql = "SELECT 
-                        id,
-                        nav_name,
-                        nav_info
+                        n1.id,
+                        n1.nav_name,
+                        n1.nav_info,
+                        n2.id iid,
+                        n2.nav_name nnav_name
                     FROM 
-                        cms_nav 
+                        cms_nav n1 
+                    LEFT JOIN 
+                        cms_nav n2 
+                    ON 
+                        n1.pid = n2.id
                     WHERE 
-                        id='$this->id' 
+                        n1.id='$this->id' 
                     OR
-                        nav_name='$this->nav_name' 
+                        n1.nav_name='$this->nav_name' 
                     LIMIT 
                         1";
         return parent::one($_sql);

@@ -122,6 +122,29 @@ ul,ol {
 #main table td {
     border-bottom: 1px solid #eee;
 }
+#main table.content td {
+    text-align: left;
+    padding-left: 5px;
+}
+#main table.content td input.text {
+    width: 440px;
+}
+#main table.content td input.small {
+    width: 100px;
+}
+#main table.content td select {
+    width: 150px;
+    height: 22px;
+}
+#main table.content td textarea {
+    margin: 0;
+    width: 440px;
+    height: 100px;
+    overflow: auto;
+}
+#main table.content td span.middle {
+    vertical-align: 50px;
+}
 #main a {
     color: #3b6ea5;
     text-decoration: none;
