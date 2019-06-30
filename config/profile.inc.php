@@ -10,6 +10,8 @@ define('DB_NAME','cms');
 define('GPC',get_magic_quotes_gpc());
 define('PAGE_SIZE',10);
 define('NAV_SIZE',10);
+define('PREV_URL', isset($_SEREVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/');
+define('UPDIR','/uploads/');
 
 // 模板配置
 define('TPL_DIR',ROOT_PATH.'/templates/');

@@ -1,9 +1,11 @@
 <?php
 
-// 开启session
+// 开启 session
 session_start();
+// 设置时区
+date_default_timezone_set('Asia/Shanghai');
 // 设置utf-8编码
-header('Content-Type:text/html;charset=utf-8');
+header('Content-Type: text/html; charset=UTF-8');
 // 网站根目录
 define('ROOT_PATH',dirname(__FILE__));
 // 引入配置
