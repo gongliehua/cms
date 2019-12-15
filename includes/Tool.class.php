@@ -19,6 +19,17 @@ class Tool {
         exit("<script type='text/javascript'>alert('$_info');history.back();</script>");
     }
 
+    // 弹窗赋值关闭(上传专用)
+    public static function alertOpenerClose($_info,$_path)
+    {
+        echo "<script type='text/javascript'>alert('$_info');</script>";
+        echo "<script type='text/javascript'>opener.document.content.thumbnail.value='$_path';</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.style.display='block';</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.src='$_path';</script>";
+        echo "<script type='text/javascript'>window.close();</script>";
+        exit;
+    }
+
     // 显示过滤
     public static function htmlString($_data)
     {

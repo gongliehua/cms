@@ -34,7 +34,7 @@
     </ol>
 
     {if $add}
-    <form action="">
+    <form action="" name="content">
         <table cellspacing="0" class="content">
             <tr><th><strong>发布一条新文档</strong></th></tr>
             <tr><td>文档标题: <input type="text" name="title" class="text"></td></tr>
@@ -51,7 +51,10 @@
             </td></tr>
             <tr><td>标口口签: <input type="text" name="tag" class="text"></td></tr>
             <tr><td>关键字口: <input type="text" name="keyword" class="text"></td></tr>
-            <tr><td>略缩图口: <input type="text" name="thumbnail" class="text"> <input type="button" value="上次缩略图" onclick="centerWindow('../templates/upfile.html','upfile','400','100')"></td></tr>
+            <tr><td>略缩图口: <input type="text" name="thumbnail" class="text" readonly>
+                    <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html','upfile','600','180')">
+                    <img src="" alt="" style="display: none;" name="pic">
+            </td></tr>
             <tr><td>文章来源: <input type="text" name="source" class="text"></td></tr>
             <tr><td>作口口者: <input type="text" name="author" class="text"></td></tr>
             <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10"></textarea></td></tr>

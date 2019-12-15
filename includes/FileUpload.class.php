@@ -5,30 +5,24 @@ class FileUpload
 {
 	// 目录路径
 	private $path;
-
 	// 今天目录
 	private $today;
-
 	// 错误代码
 	private $error;
-
 	// 表单最大值
 	private $maxsize;
-
 	// 类型
 	private $type;
-
 	// 类型合集
 	private $typeArr = ['image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png', 'image/gif'];
-
 	// 文件名
 	private $name;
-
 	// 临时文件
 	private $tmp;
-
 	// 连接路径
 	private $linkpath;
+	// 今天目录（但对的）
+	private $linktoday;
 
 	// 构造方法
 	public function __construct($_file, $_maxsize)
@@ -37,7 +31,8 @@ class FileUpload
 		$this->maxsize = $_maxsize/1024;
 		$this->type = $_FILES[$_file]['type'];
 		$this->path = ROOT_PATH.UPDIR;
-		$this->today = $this->path.date('Ymd/');
+		$this->linktoday = date('Ymd/');
+		$this->today = $this->path.$this->linktoday;
 		$this->name = $_FILES[$_file]['name'];
 		$this->tmp = $_FILES[$_file]['tmp_name'];
 		$this->checkPath();
@@ -98,7 +93,8 @@ class FileUpload
 		$_nameArr = explode('.', $this->name);
 		$_postfix = end($_nameArr);
 		$_newname = date('YmdHis').mt_rand(100,1000).'.'.$_postfix;
-		return $this->linkpath = $this->today.$_newname;
+		$this->linkpath = UPDIR.$this->linktoday.$_newname;
+		return $this->today.$_newname;
 	}
 
 	// 移动文件
@@ -116,6 +112,14 @@ class FileUpload
 	// 返回路径
 	public function getPath()
 	{
+	    $_path = $_SERVER['SCRIPT_NAME'];
+        $_dir = dirname(dirname($_path));
+        if ($_dir == '\\') $_dir = '/';
+        $this->linkpath = $_dir.$this->linkpath;
+        // 兼容处理
+        if (substr($this->linkpath,0,2) == '//') {
+            return substr($this->linkpath,1);
+        }
 		return $this->linkpath;
 	}
 }
