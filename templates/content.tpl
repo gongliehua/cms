@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="../style/admin.css">
     <script type="text/javascript" src="../js/admin_content.js"></script>
     <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+    <style>
+        /* 由于后台的CSS影响了CKEditor的CSS,此处做兼容处理，确认/取消 按钮居中 */
+        table.cke_dialog_footer_buttons tr.cke_dialog_ui_hbox {text-align:center;}
+        /* 设置显示方式 */
+        table.cke_dialog_footer_buttons tr.cke_dialog_ui_hbox td.cke_dialog_ui_hbox_first{display:inline;}
+        table.cke_dialog_footer_buttons tr.cke_dialog_ui_hbox td.cke_dialog_ui_hbox_last{display:inline;}
+        /* 设置确认按钮文字颜色 */
+        table.cke_dialog_footer_buttons tr.cke_dialog_ui_hbox td.cke_dialog_ui_hbox_first a.cke_dialog_ui_button_ok span{color:#fff;}
+    </style>
 </head>
 <body id="main">
     <div class="map">
