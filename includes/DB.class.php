@@ -9,7 +9,7 @@ class DB {
         if (mysqli_connect_errno()) {
             exit(mysqli_connect_error());
         }
-        $_mysqli->set_charset('utf8');
+        $_mysqli->set_charset('utf8mb4');
         return $_mysqli;
     }
 
