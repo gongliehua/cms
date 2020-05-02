@@ -30,6 +30,19 @@ class Tool {
         exit;
     }
 
+    //字符串截取
+    public static function subStr($_object, $_field, $_length,$_encoding)
+    {
+        if ($_object) {
+            foreach ($_object as $_value) {
+                if (mb_strlen($_value->$_field,$_encoding) > $_length) {
+                    $_value->$_field = mb_substr($_value->$_field,0,$_length,$_encoding).'...';
+                }
+            }
+        }
+        return $_object;
+    }
+
     // 显示过滤
     public static function htmlString($_data)
     {

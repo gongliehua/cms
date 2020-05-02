@@ -29,6 +29,18 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
+    //获取文档列表
+    public function getListContent()
+    {
+      $_sql = "SELECT 
+                      id,title,info,thumbnail,date,count
+                FROM 
+                          cms_content 
+                WHERE 
+                          nav='$this->nav'";
+      return parent::all($_sql);
+    }
+
     // 新增文档内容
     public function addContent()
     {

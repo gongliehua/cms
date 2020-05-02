@@ -12,36 +12,18 @@
     {include file="header.tpl"}
     <div id="list">
         <h2>当前位置 &gt; {$nav}</h2>
+        {if $AllListContent}
+        {foreach $AllListContent(key,value)}
         <dl>
-            <dt><img src="images/none.jpg" alt=""></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">他第二次放出的鸽子衔回</a></dd>
-            <dd>日期: 2011年10月10日 17:17:17 点击率: 224 好评: 0</dd>
-            <dd>他第二次放出的鸽子衔回<他第二次第二次放出第二次放出第二次放出第二次放出第二次放出放回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<</dd>
+            <dt><img src="{@value->thumbnail}" alt="{@value->title}"></dt>
+            <dd>[<strong>军事动态</strong>] <a href="#">{@value->title}</a></dd>
+            <dd>日期: {@value->date} 点击率: {@value->count} 好评: 0</dd>
+            <dd>核心提示：{@value->info}</dd>
         </dl>
-        <dl>
-            <dt><img src="images/none.jpg" alt=""></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">他第二次放出的鸽子衔回</a></dd>
-            <dd>日期: 2011年10月10日 17:17:17 点击率: 224 好评: 0</dd>
-            <dd>他第二次放出的鸽子衔回<他第二次第二次放出第二次放出第二次放出第二次放出第二次放出放回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/none.jpg" alt=""></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">他第二次放出的鸽子衔回</a></dd>
-            <dd>日期: 2011年10月10日 17:17:17 点击率: 224 好评: 0</dd>
-            <dd>他第二次放出的鸽子衔回<他第二次第二次放出第二次放出第二次放出第二次放出第二次放出放回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/none.jpg" alt=""></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">他第二次放出的鸽子衔回</a></dd>
-            <dd>日期: 2011年10月10日 17:17:17 点击率: 224 好评: 0</dd>
-            <dd>他第二次放出的鸽子衔回<他第二次第二次放出第二次放出第二次放出第二次放出第二次放出放回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/none.jpg" alt=""></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">他第二次放出的鸽子衔回</a></dd>
-            <dd>日期: 2011年10月10日 17:17:17 点击率: 224 好评: 0</dd>
-            <dd>他第二次放出的鸽子衔回<他第二次第二次放出第二次放出第二次放出第二次放出第二次放出放回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<他第二次放出的鸽子衔回<</dd>
-        </dl>
+        {/foreach}
+        {else}
+        <p class="none">没有任何数据</p>
+        {/if}
         <div id="page">
             分页
         </div>

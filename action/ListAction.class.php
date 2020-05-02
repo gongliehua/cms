@@ -8,8 +8,30 @@ class ListAction extends Action {
         parent::__construct($_tpl);
     }
 
-    // 获取前台显示到货
-    public function getNav()
+    //执行
+    public function _action() {
+        $this->getNav();
+        $this->getListContent();
+    }
+
+    // 获取前台列表显示
+    private function getListContent()
+    {
+        if (isset($_GET['id'])) {
+            $_model = new ContentModel();
+            parent::__construct($this->_tpl, $_model);
+            $this->_model->nav = $_GET['id'];
+            $_object = $this->_model->getListContent();
+            $_object = Tool::subStr($_object,'info',120,'utf-8');
+            $_object = Tool::subStr($_object,'title',30,'utf-8');//35
+            $this->_tpl->assign('AllListContent',$_object);
+        } else {
+            Tool::alertBack('警告：非法操作！');
+        }
+    }
+
+    // 获取前台显示导航
+    private function getNav()
     {
         if (isset($_GET['id'])) {
             $_nav = new NavModel();
