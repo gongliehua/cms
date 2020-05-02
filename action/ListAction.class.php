@@ -20,7 +20,17 @@ class ListAction extends Action {
         if (isset($_GET['id'])) {
             $_model = new ContentModel();
             parent::__construct($this->_tpl, $_model);
-            $this->_model->nav = $_GET['id'];
+            $this->_model->id = $_GET['id'];
+            // 获取ID
+            $_navId = $this->_model->getNavChildId();
+            if ($_navId) {
+                $this->_model->nav = Tool::objArrOfStr($_navId,'id');
+            } else {
+                $this->_model->nav = $this->_model->id;
+            }
+
+            parent::page($this->_model->getListContentTotal(),ARTICLE_SIZE);
+
             $_object = $this->_model->getListContent();
             $_object = Tool::subStr($_object,'info',120,'utf-8');
             $_object = Tool::subStr($_object,'title',30,'utf-8');//35

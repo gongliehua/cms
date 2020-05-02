@@ -2,6 +2,7 @@
 
 // 内容实体类
 class ContentModel extends Model {
+    private $id;
     private $title;
     private $nav;
     private $attr;
@@ -16,6 +17,7 @@ class ContentModel extends Model {
     private $commend;
     private $count;
     private $color;
+    private $limit;
 
     // 拦截器
     public function __set($_key,$_value)
@@ -29,15 +31,52 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
+    //获取主类下的子类ID
+    public function getNavChildId()
+    {
+      $_sql = "SELECT 
+                      id 
+                FROM 
+                      cms_nav 
+              WHERE 
+                      pid='$this->id'";
+      return parent::all($_sql);
+    }
+
+    // 获取文档总记录
+    public function getListContentTotal()
+    {
+        $_sql = "SELECT 
+                        COUNT(*) 
+                    FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.nav IN ($this->nav)";
+        return parent::total($_sql);
+    }
+
     //获取文档列表
     public function getListContent()
     {
       $_sql = "SELECT 
-                      id,title,info,thumbnail,date,count
+                      c.id,
+                      c.title,
+                      c.info,
+                      c.thumbnail,
+                      c.date,
+                      c.count,
+                      n.nav_name
                 FROM 
-                          cms_content 
+                          cms_content c,
+                          cms_nav n
                 WHERE 
-                          nav='$this->nav'";
+                          c.nav = n.id 
+                      AND 
+                          c.nav IN ($this->nav) 
+                      $this->limit";
       return parent::all($_sql);
     }
 

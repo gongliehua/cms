@@ -16,7 +16,7 @@
         {foreach $AllListContent(key,value)}
         <dl>
             <dt><img src="{@value->thumbnail}" alt="{@value->title}"></dt>
-            <dd>[<strong>军事动态</strong>] <a href="#">{@value->title}</a></dd>
+            <dd>[<strong>{@value->nav_name}</strong>] <a href="#">{@value->title}</a></dd>
             <dd>日期: {@value->date} 点击率: {@value->count} 好评: 0</dd>
             <dd>核心提示：{@value->info}</dd>
         </dl>
@@ -25,7 +25,7 @@
         <p class="none">没有任何数据</p>
         {/if}
         <div id="page">
-            分页
+            {$page}
         </div>
     </div>
     <div id="sidebar">

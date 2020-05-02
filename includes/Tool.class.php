@@ -30,6 +30,18 @@ class Tool {
         exit;
     }
 
+    //将对象数组转换成字符串,并去掉最后的逗号
+    public static function objArrOfStr($_object,$_field)
+    {
+        $_html = '';
+        if ($_object) {
+            foreach ($_object as $_value) {
+                $_html .= $_value->$_field.',';
+            }
+        }
+        return substr($_html,0,strlen($_html)-1);
+    }
+
     //字符串截取
     public static function subStr($_object, $_field, $_length,$_encoding)
     {

@@ -198,6 +198,8 @@ h2 {
     border: 1px solid #666;
     padding: 2px 5px;
     margin: 0 2px;
+    color: #3b6ea5;
+    text-decoration: none;
 }
 #page a:hover,#page span.me {
     color: #fff;

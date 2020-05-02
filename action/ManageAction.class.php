@@ -35,14 +35,19 @@ class ManageAction extends Action {
     // 列表
     private function show()
     {
+        parent::page($this->_model->getManageTotal());
+        /*
         $_page = new Page($this->_model->getManageTotal(),PAGE_SIZE);
         $this->_model->limit = $_page->limit;
+        */
         $this->_tpl->assign('show',true);
         $this->_tpl->assign('add',false);
         $this->_tpl->assign('update',false);
         $this->_tpl->assign('title','管理员列表');
         $this->_tpl->assign('AllManage',$this->_model->getAllManage());
+        /*
         $this->_tpl->assign('page',$_page->showPage());
+        */
     }
 
     // 添加
