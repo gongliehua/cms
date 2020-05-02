@@ -111,14 +111,14 @@ class Image{
 			$r = $_n_w / $new_width;
 			$new_width *= $r;
 			$new_height *= $r;
-			$_cut_height = ($this->height - $_n_w) / 4;
+			$_cut_height = ($new_height - $_n_h) / 2;
 		}
 
 		if ($new_width < $_n_h) {
 			$r = $_n_h / $new_height;
 			$new_width *= $r;
 			$new_height *= $r;
-			$_cut_width = ($this->width - $_n_h) / 4;
+			$_cut_width = ($new_width - $_n_w) / 2;
 		}
 
 		$this->new = imagecreatetruecolor($_n_w, $_n_h);

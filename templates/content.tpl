@@ -40,7 +40,8 @@
             <tr><td>文档标题: <input type="text" name="title" class="text"></td></tr>
             <tr><td>栏口口目:
                 <select name="nav">
-                    <option value="">请选择一个类别</option>
+                    <option value="" style="padding: 0;">请选择一个类别</option>
+                    {$nav}
                 </select>
             </td></tr>
             <tr><td>定义属性: 

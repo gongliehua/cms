@@ -48,6 +48,20 @@ class ContentAction extends Action {
        $this->_tpl->assign('add', true);
        $this->_tpl->assign('update', false);
        $this->_tpl->assign('title', '新增文档');
+       $_nav = new NavModel();
+       $_html = '';
+       foreach ($_nav->getAllFrontNav() as $_object) {
+            $_html .= '<optgroup label="'.$_object->nav_name.'">';
+            $_nav->id = $_object->id;
+            // 获取子导航
+            if (($_childNav = $_nav->getAllChildFrontNav())) {
+                foreach ($_childNav as $_object) {
+                    $_html .= '<option>'.$_object->nav_name.'</option>';
+                }
+            }
+            $_html .= '</optgroup>';
+       }
+       $this->_tpl->assign('nav',$_html);
     }
 
     // 修改

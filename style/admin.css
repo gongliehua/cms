@@ -150,8 +150,15 @@ ul,ol {
     width: 100px;
 }
 #main table.content td select {
+    border: 1px solid #ccc;
     width: 150px;
     height: 22px;
+}
+#main table.content td select optgroup {
+    font-style: normal;
+}
+#main table.content td select option {
+    padding: 0 0 0 20px;
 }
 #main table.content td textarea {
     margin: 0;
