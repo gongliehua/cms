@@ -37,12 +37,13 @@
     <form name="content" method="post" action="?action=add" >
         <table cellspacing="0" class="content">
             <tr><th><strong>发布一条新文档</strong></th></tr>
-            <tr><td>文档标题: <input type="text" name="title" class="text"></td></tr>
+            <tr><td>文档标题: <input type="text" name="title" class="text"><span class="red">[必填]</span>(*标题2-50字符之间)</td></tr>
             <tr><td>栏口口目:
                 <select name="nav">
                     <option value="" style="padding: 0;">请选择一个类别</option>
                     {$nav}
                 </select>
+                <span class="red">[必选]</span>
             </td></tr>
             <tr><td>定义属性: 
                 <input type="checkbox" name="attr[]" value="头条">头条
@@ -50,16 +51,16 @@
                 <input type="checkbox" name="attr[]" value="加粗">加粗
                 <input type="checkbox" name="attr[]" value="跳转">跳转
             </td></tr>
-            <tr><td>标口口签: <input type="text" name="tag" class="text"></td></tr>
-            <tr><td>关键字口: <input type="text" name="keyword" class="text"></td></tr>
+            <tr><td>标口口签: <input type="text" name="tag" class="text">(*每个标签用','隔开,总长30位之内)</td></tr>
+            <tr><td>关键字口: <input type="text" name="keyword" class="text">(*每个关键字用','隔开,总长30位之内)</td></tr>
             <tr><td>略缩图口: <input type="text" name="thumbnail" class="text" readonly>
                     <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html','upfile','600','180')">
-                    <img src="" alt="" style="display: none;" name="pic">
+                    <img src="" alt="" style="display: none;" name="pic">(*必须是jpg,gif,png，并且200k内)
             </td></tr>
-            <tr><td>文章来源: <input type="text" name="source" class="text"></td></tr>
-            <tr><td>作口口者: <input type="text" name="author" class="text"></td></tr>
-            <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10"></textarea></td></tr>
-            <tr class="ckeditor"><td><textarea id="Textarea1" class="ckeditor" name="content"></textarea></td></tr>
+            <tr><td>文章来源: <input type="text" name="source" class="text">(*文章来源20位之内)</td></tr>
+            <tr><td>作口口者: <input type="text" name="author" value="{$author}" class="text">(*作者10位之内)</td></tr>
+            <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10"></textarea><span class="middle">(*内容摘要200位之内)</span></td></tr>
+            <tr class="ckeditor"><td><textarea id="TextArea1" class="ckeditor" name="content"></textarea></td></tr>
             <tr><td>评论选项:
                 <input type="radio" name="commend" value="1" checked="checked">允许评论
                 <input type="radio" name="commend" value="0">禁止评论
@@ -91,7 +92,7 @@
                     <option value="orange" style="color: orange;">橙色</option>
                 </select>
             </td></tr>
-            <tr><td><input type="submit" name="send" value="发布文档"> <input type="reset" value="重置"></td></tr>
+            <tr><td><input type="submit" onclick="return checkAddContent();" name="send" value="发布文档"> <input type="reset" value="重置"></td></tr>
             <tr><td></td></tr>
         </table>
     </form>

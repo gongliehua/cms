@@ -9,6 +9,13 @@ class Validate {
         return false;
     }
 
+    // 数据是否为数字
+    public static function checkNum($_data)
+    {
+        if (!is_numeric($_data)) return true;
+        return false;
+    }
+
     // 长度是否合法
     public static function checkLength($_data,$_length,$_flag = null)
     {
