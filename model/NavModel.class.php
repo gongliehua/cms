@@ -21,6 +21,30 @@ class NavModel extends Model {
         return $this->$_key;
     }
 
+    //获取所有非主类的id
+    public function getAllNavChildId()
+    {
+        $_sql = "SELECT 
+                        id 
+                FROM 
+                        cms_nav 
+                WHERE 
+                        pid <> 0";
+        return parent::all($_sql);
+    }
+
+    //获取主类下的子类ID
+    public function getNavChildId()
+    {
+      $_sql = "SELECT 
+                      id 
+                FROM 
+                      cms_nav 
+              WHERE 
+                      pid='$this->id'";
+      return parent::all($_sql);
+    }
+
     // 排序
     public function setNavSort()
     {

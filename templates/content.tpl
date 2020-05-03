@@ -97,5 +97,51 @@
         </table>
     </form>
     {/if}
+
+    {if $show}
+    <table cellspacing="0">
+        <tr>
+            <th>编号</th>
+            <th>标题</th>
+            <th>属性</th>
+            <th>文档类别</th>
+            <th>浏览次数</th>
+            <th>发布时间</th>
+            <th>操作</th>
+        </tr>
+
+        {if $SearchContent}
+        {foreach $SearchContent(key,value)}
+            <tr>
+                <td>{@value->id}</td>
+                <td><a href="../details.php?id={@value->id}" title="{@value->t}" target="_blank">{@value->title}</a></td>
+                <td>{@value->attr}</td>
+                <td><a href="?action=show&nav={@value->nav}">{@value->nav_name}</a></td>
+                <td>{@value->count}</td>
+                <td>{@value->date}</td>
+                <td><a href="manage.php?action=update&id={@value->id}">编辑</a> <a href="manage.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个管理员吗？') ? true : false;">删除</a></td>
+            </tr>
+        {/foreach}
+        {else}
+            <tr>
+                <td colspan="7">对不起，没有任何数据</td>
+            </tr>
+        {/if}
+
+    </table>
+    {if $SearchContent}
+    <form action="?acton=show" method="get">
+    <div id="page">
+        {$page}
+        <input type="hidden" name="action" value="show">
+        <select name="nav" class="select">
+            <option value="0">默认全部</option>
+            {$nav}
+        </select>
+        <input type="submit" value="查询">
+    </div>
+    </form>
+    {/if}
+    {/if}
 </body>
 </html>

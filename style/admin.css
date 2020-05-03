@@ -289,3 +289,11 @@ ul,ol {
     padding: 2px 5px;
     margin: 0 2px;
 }
+#page select.select {
+    width: 120px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+#page select.select optgroup {
+    font-style: normal;
+}

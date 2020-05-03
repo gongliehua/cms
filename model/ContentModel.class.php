@@ -31,18 +31,6 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
-    //获取主类下的子类ID
-    public function getNavChildId()
-    {
-      $_sql = "SELECT 
-                      id 
-                FROM 
-                      cms_nav 
-              WHERE 
-                      pid='$this->id'";
-      return parent::all($_sql);
-    }
-
     // 获取文档总记录
     public function getListContentTotal()
     {
@@ -64,6 +52,9 @@ class ContentModel extends Model {
       $_sql = "SELECT 
                       c.id,
                       c.title,
+                      c.nav,
+                      c.title t,
+                      c.attr,
                       c.info,
                       c.thumbnail,
                       c.date,
