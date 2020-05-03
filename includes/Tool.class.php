@@ -30,6 +30,11 @@ class Tool {
         exit;
     }
 
+    //将html字符串转换成html标签
+    public static function unHtml($_str) {
+        return htmlspecialchars_decode($_str);
+    }
+
     //将对象数组转换成字符串,并去掉最后的逗号
     public static function objArrOfStr($_object,$_field)
     {

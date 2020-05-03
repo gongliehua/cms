@@ -9,7 +9,7 @@ define('DB_NAME','cms');						//数据库
 // 系统配置
 define('GPC',get_magic_quotes_gpc());			//sql转义功能是否打开
 define('PAGE_SIZE',10);							//每页多少条
-define('ARTICLE_SIZE',1);						//文档每页条数
+define('ARTICLE_SIZE',8);						//文档每页条数
 define('PREV_URL', isset($_SEREVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/');//上一页地址
 define('NAV_SIZE',10);							//主导航在前台显示的个数
 define('UPDIR','/uploads/');					//上传主目录
