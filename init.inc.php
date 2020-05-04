@@ -24,3 +24,4 @@ spl_autoload_register(function($_className){
 $_tpl = new Templates();
 // 初始化
 require 'common.inc.php';
+
