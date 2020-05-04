@@ -7,13 +7,14 @@
     <title>CMS内容管理系统</title>
     <link rel="stylesheet" href="style/base.css">
     <link rel="stylesheet" href="style/details.css">
+    <script type="text/javascript" src="config/static.php?id={$id}"></script>
 </head>
 <body>
     {include file="header.tpl"}
     <div id="details">
         <h2>当前位置 &gt; {$nav}</h2>
         <h3>{$titlec}</h3>
-        <div class="d1">时间：{$date} 来源：{$source} 作者：{$author} 点击量：{$count}</div>
+        <div class="d1">时间：{$date} 来源：{$source} 作者：{$author} 点击量：{$count}次</div>
         <div class="d2">{$info}</div>
         <div class="d3">{$content}</div>
     </div>

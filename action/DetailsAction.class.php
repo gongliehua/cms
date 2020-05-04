@@ -19,8 +19,9 @@ class DetailsAction extends Action {
             $_model = new ContentModel();
             parent::__construct($this->_tpl,$_model);
             $this->_model->id = $_GET['id'];
+            if (!$this->_model->setContentCount()) Tool::alertBack('警告：不存在此文档');
             $_content = $this->_model->getOneContent();
-            if (!$_content) Tool::alertBack('警告：不存在此文档');
+            $this->_tpl->assign('id',$_content->id);
             $this->_tpl->assign('titlec',$_content->title);
             $this->_tpl->assign('count',$_content->count);
             $this->_tpl->assign('date',$_content->date);

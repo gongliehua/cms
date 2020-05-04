@@ -30,6 +30,14 @@ class Tool {
         exit;
     }
 
+    //将当前文件转换成.tpl文件名
+    public static function tplName()
+    {
+        $_str = explode('/', $_SERVER['SCRIPT_NAME']);
+        $_str = explode('.', $_str);
+        return $_str[0].'.tpl';
+    }
+
     //将html字符串转换成html标签
     public static function unHtml($_str) {
         return htmlspecialchars_decode($_str);

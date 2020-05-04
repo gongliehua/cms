@@ -33,6 +33,20 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
+    //累计文档的点击量
+    public function setContentCount()
+    {
+      $_sql = "UPDATE 
+                    cms_content 
+                SET 
+                      count=count+1 
+              WHERE 
+                    id='$this->id' 
+              LIMIT 
+                    1";
+      return parent::aud($_sql);
+    }
+
     // 获取文档总记录
     public function getListContentTotal()
     {
