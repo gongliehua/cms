@@ -17,6 +17,8 @@ class ContentModel extends Model {
     private $commend;
     private $count;
     private $color;
+    private $sort;
+    private $readlimit;
     private $limit;
 
     // 拦截器
@@ -84,7 +86,16 @@ class ContentModel extends Model {
                       date,
                       count,
                       author,
-                      source 
+                      source,
+                      tag, 
+                      keyword,
+                      thumbnail,
+                      gold,
+                      attr,
+                      color,
+                      sort,
+                      readlimit,
+                      commend
                 FROM 
                       cms_content
                 WHERE
@@ -111,6 +122,8 @@ class ContentModel extends Model {
                                           commend,
                                           count,
                                           color,
+                                          sort,
+                                          readlimit,
                                           date
                               )
                               VALUES (
@@ -128,8 +141,50 @@ class ContentModel extends Model {
                                       '$this->commend',
                                       '$this->count',
                                       '$this->color',
+                                      '$this->sort',
+                                      '$this->readlimit',
                                       NOW()
                               )";
         return parent::aud($_sql);
+    }
+
+    //修改文档
+    public function updateContent(){
+      $_sql = "UPDATE 
+                      cms_content 
+                SET 
+                    title='$this->title',
+                    nav='$this->nav',
+                    info='$this->info',
+                    thumbnail='$this->thumbnail',
+                    source='$this->source',
+                    author='$this->author',
+                    tag='$this->tag',
+                    keyword='$this->keyword',
+                    attr='$this->attr',
+                    content='$this->content',
+                    gold='$this->gold',
+                    commend='$this->commend',
+                    count='$this->count',
+                    color='$this->color',
+                    sort='$this->sort',
+                    readlimit='$this->readlimit'
+                WHERE 
+                    id='$this->id'
+                LIMIT 
+                    1";
+      return parent::aud($_sql);
+    }
+
+    //删除文档
+    public function deleteContent()
+    {
+      $_sql = "DELETE FROM 
+                          cms_content 
+                WHERE 
+                        id='$this->id' 
+                LIMIT 
+                        1";
+      return parent::aud($_sql);
     }
 }

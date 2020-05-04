@@ -68,21 +68,21 @@
             </td></tr>
             <tr><td>文档排序:
                 <select name="sort">
-                    <option value="">默认排序</option>
-                    <option value="">置顶一天</option>
-                    <option value="">置顶一周</option>
-                    <option value="">置顶一月</option>
-                    <option value="">置顶一年</option>
+                    <option value="0">默认排序</option>
+                    <option value="1">置顶一天</option>
+                    <option value="2">置顶一周</option>
+                    <option value="3">置顶一月</option>
+                    <option value="4">置顶一年</option>
                 </select>
                 消费金币: <input type="text" name="gold" value="0" class="text small">
             </td></tr>
             <tr><td>阅读权限:
-                <select name="limit">
-                    <option value="">开放浏览</option>
-                    <option value="">初级会员</option>
-                    <option value="">中级会员</option>
-                    <option value="">高级会员</option>
-                    <option value="">VIP会员</option>
+                <select name="readlimit">
+                    <option value="0">开放浏览</option>
+                    <option value="1">初级会员</option>
+                    <option value="2">中级会员</option>
+                    <option value="3">高级会员</option>
+                    <option value="4">VIP会员</option>
                 </select>
                 默认颜色:
                 <select name="color">
@@ -119,7 +119,7 @@
                 <td><a href="?action=show&nav={@value->nav}">{@value->nav_name}</a></td>
                 <td>{@value->count}</td>
                 <td>{@value->date}</td>
-                <td><a href="manage.php?action=update&id={@value->id}">编辑</a> <a href="manage.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个管理员吗？') ? true : false;">删除</a></td>
+                <td><a href="content.php?action=update&id={@value->id}">编辑</a> <a href="content.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个文档吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
         {else}
@@ -142,6 +142,56 @@
     </div>
     </form>
     {/if}
+    {/if}
+
+    {if $update}
+    <form name="content" method="post" action="?action=update" >
+        <input type="hidden" name="id" value="{$id}">
+        <input type="hidden" name="prev_url" value="{$prev_url}">
+        <table cellspacing="0" class="content">
+            <tr><th><strong>发布一条新文档</strong></th></tr>
+            <tr><td>文档标题: <input type="text" name="title" value="{$titlec}" class="text"><span class="red">[必填]</span>(*标题2-50字符之间)</td></tr>
+            <tr><td>栏口口目:
+                <select name="nav">
+                    <option value="" style="padding: 0;">请选择一个类别</option>
+                    {$nav}
+                </select>
+                <span class="red">[必选]</span>
+            </td></tr>
+            <tr><td>定义属性: {$attr}</td></tr>
+            <tr><td>标口口签: <input type="text" name="tag" value="{$tag}" class="text">(*每个标签用','隔开,总长30位之内)</td></tr>
+            <tr><td>关键字口: <input type="text" name="keyword" value="{$keyword}" class="text">(*每个关键字用','隔开,总长30位之内)</td></tr>
+            <tr><td>略缩图口: <input type="text" name="thumbnail" value="{$thumbnail}" class="text" readonly>
+                    <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html','upfile','600','180')">
+                    <img src="{$thumbnail}" alt="" style="display: block;" name="pic">(*必须是jpg,gif,png，并且200k内)
+            </td></tr>
+            <tr><td>文章来源: <input type="text" name="source" value="{$source}" class="text">(*文章来源20位之内)</td></tr>
+            <tr><td>作口口者: <input type="text" name="author" value="{$author}" class="text">(*作者10位之内)</td></tr>
+            <tr><td><span class="middle">内容摘要: </span><textarea name="info" cols="30" rows="10">{$info}</textarea><span class="middle">(*内容摘要200位之内)</span></td></tr>
+            <tr class="ckeditor"><td><textarea id="TextArea1" class="ckeditor" name="content">{$content}</textarea></td></tr>
+            <tr><td>评论选项:
+                {$commend}
+                浏览次数: <input type="text" name="count" value="{$count}" value="100" class="text small">
+            </td></tr>
+            <tr><td>文档排序:
+                <select name="sort">
+                    {$sort}
+                </select>
+                消费金币: <input type="text" name="gold" value="{$gold}" class="text small">
+            </td></tr>
+            <tr><td>阅读权限:
+                <select name="readlimit">
+                    {$readlimit}
+                </select>
+                默认颜色:
+                <select name="color">
+                    {$color}
+                </select>
+            </td></tr>
+            <tr><td><input type="submit" onclick="return checkAddContent();" name="send" value="修改文档"> <input type="reset" value="重置"></td></tr>
+            <tr><td></td></tr>
+        </table>
+    </form>
     {/if}
 </body>
 </html>

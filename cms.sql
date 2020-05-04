@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.7.17)
-# Date: 2020-05-03 01:37:11
+# Date: 2020-05-04 14:29:56
 # Generator: MySQL-Front 5.3  (Build 4.234)
 
 /*!40101 SET NAMES utf8 */;
@@ -29,12 +29,13 @@ CREATE TABLE `cms_content` (
   `color` varchar(10) DEFAULT NULL COMMENT '颜色',
   `date` datetime DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='内容表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='内容表';
 
 #
 # Data for table "cms_content"
 #
 
+INSERT INTO `cms_content` VALUES (1,'网友还在吃瓜，懂事的编辑教你们保护手机的秘密网友还在吃瓜，懂事的编辑教你们保护手机的秘密',12,'头条','编辑,手机,密码','手机,密码,网友','/uploads/20200503/20200503023701765.png','太平洋','admin','瓜模式。不过，在很多网友还在专心吃瓜的时候，懂事的男生（或者女生）已经开始在删聊天记录了。毕竟，这一切都起源于翻了手机里的聊天记录我们就不讨论「在一段感情中应不应该把手机里的内容向自己的另一半公开」这个问题了，毕竟我们是手机频道又不是情感频道。但是，我们可以教大家怎么保护好手机里的秘密不被发现啊','<p>\r\n\t瓜模式。不过，在很多网友还在专心吃瓜的时候，懂事的男生（或者女生）已经开始在删聊天记录了。毕竟，这一切都起源于翻了手机里的聊天记录我们就不讨论「在一段感情中应不应该把手机里的内容向自己的另一半公开」这个问题了，毕竟我们是手机频道又不是情感频道。但是，我们可以教大家怎么保护好手机里的秘密不被发现啊瓜模式。不过，在很多网友还在专心吃瓜的时候，懂事的男生（或者女生）已经开始在删聊天记录了。毕竟，这一切都起源于翻了手机里的聊天记录我们就不讨论「在一段感情中应不应该把手机里的内容向自己的另一半公开」这个问题了，毕竟我们是手机频道又不是情感频道。但是，我们可以教大家怎么保护好手机里的秘密不被发现啊</p>\r\n<p>\r\n\t&nbsp;</p>\r\n<p>\r\n\t瓜模式。不过，在很多网友还在专心吃瓜的时候，懂事的男生（或者女生）已经开始在删聊天记录了。毕竟，这一切都起源于翻了手机里的聊天记录我们就不讨论「在一段感情中应不应该把手机里的内容向自己的另一半公开」这个问题了，毕竟我们是手机频道又不是情感频道。但是，我们可以教大家怎么保护好手机里的秘密不被发现啊</p>\r\n<p>\r\n\t瓜模式。不过，在很多网友还在专心吃瓜的时候，懂事的男生（或者女生）已经开始在删聊天记录了。毕竟，这一切都起源于翻了手机里的聊天记录我们就不讨论「在一段感情中应不应该把手机里的内容向自己的另一半公开」这个问题了，毕竟我们是手机频道又不是情感频道。但是，我们可以教大家怎么保护好手机里的秘密不被发现啊</p>\r\n',1,100,0,0,1,'','2020-05-03 02:13:57'),(3,'范德萨',13,'无属性','打发',' s','',' dsa','admin','da','<p>\r\n\tfsad</p>\r\n',1,100,0,0,1,'','2020-05-03 18:12:39'),(4,'test1',13,'头条','1','1','/uploads/20200504/20200504134529267.gif','1','admin','1','<p>\r\n\t1</p>\r\n',0,1001,1,4,3,'blue','2020-05-04 13:45:44'),(5,'12',13,'无','1','1','','1','admin','1','<p>\r\n\t1d</p>\r\n',1,100,0,0,0,'','2020-05-04 13:46:11'),(6,'fdsas',12,'无','','','','','admin','','<p>\r\n\tsss</p>\r\n',1,100,0,0,0,'','2020-05-04 14:06:18'),(7,'444',13,'推荐','4','4','','4','4','4','<p>\r\n\t4</p>\r\n',0,4,4,3,3,'orange','2020-05-04 14:08:49');
 
 #
 # Structure for table "cms_level"
@@ -75,7 +76,7 @@ CREATE TABLE `cms_manage` (
 # Data for table "cms_manage"
 #
 
-INSERT INTO `cms_manage` VALUES (1,'admin','7c4a8d09ca3762af61e59520943dc26494f8941b',6,14,'127.0.0.1','2020-05-02 20:30:28',NULL),(2,'user','7c4a8d09ca3762af61e59520943dc26494f8941b',5,0,'',NULL,NULL),(3,'guest','7c4a8d09ca3762af61e59520943dc26494f8941b',1,0,'',NULL,NULL);
+INSERT INTO `cms_manage` VALUES (1,'admin','7c4a8d09ca3762af61e59520943dc26494f8941b',6,16,'127.0.0.1','2020-05-04 12:29:02',NULL),(2,'user','7c4a8d09ca3762af61e59520943dc26494f8941b',5,0,'',NULL,NULL),(3,'guest','7c4a8d09ca3762af61e59520943dc26494f8941b',1,0,'',NULL,NULL);
 
 #
 # Structure for table "cms_nav"
@@ -89,10 +90,10 @@ CREATE TABLE `cms_nav` (
   `pid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
   `sort` int(11) unsigned DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='导航表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COMMENT='导航表';
 
 #
 # Data for table "cms_nav"
 #
 
-INSERT INTO `cms_nav` VALUES (1,'军事动态',NULL,0,NULL),(2,'八卦娱乐',NULL,0,NULL),(3,'时尚女人',NULL,0,NULL),(4,'科技频道',NULL,0,NULL),(5,'智能手机',NULL,0,NULL),(6,'美容护发',NULL,0,NULL),(7,'热门汽车',NULL,0,NULL),(8,'房产家居',NULL,0,NULL),(9,'读书教育',NULL,0,NULL),(10,'房产家居',NULL,0,NULL),(11,'股票基金',NULL,0,NULL),(12,'越南军事','',1,12);
+INSERT INTO `cms_nav` VALUES (1,'军事动态',NULL,0,NULL),(2,'八卦娱乐',NULL,0,NULL),(3,'时尚女人',NULL,0,NULL),(4,'科技频道',NULL,0,NULL),(5,'智能手机',NULL,0,NULL),(6,'美容护发',NULL,0,NULL),(7,'热门汽车',NULL,0,NULL),(8,'房产家居',NULL,0,NULL),(9,'读书教育',NULL,0,NULL),(10,'房产家居',NULL,0,NULL),(11,'股票基金',NULL,0,NULL),(12,'越南军事','',1,12),(13,'test','dfsa',2,13);
