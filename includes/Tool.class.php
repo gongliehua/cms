@@ -34,7 +34,7 @@ class Tool {
     public static function tplName()
     {
         $_str = explode('/', $_SERVER['SCRIPT_NAME']);
-        $_str = explode('.', $_str);
+        $_str = explode('.', $_str[1]);
         return $_str[0].'.tpl';
     }
 

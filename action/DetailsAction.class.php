@@ -23,13 +23,18 @@ class DetailsAction extends Action {
             $_content = $this->_model->getOneContent();
             $this->_tpl->assign('id',$_content->id);
             $this->_tpl->assign('titlec',$_content->title);
-            $this->_tpl->assign('count',$_content->count);
             $this->_tpl->assign('date',$_content->date);
             $this->_tpl->assign('source',$_content->source);
             $this->_tpl->assign('author',$_content->author);
             $this->_tpl->assign('info',$_content->info);
             $this->_tpl->assign('content',Tool::unHtml($_content->content));
             $this->getNav($_content->nav);
+            // 判断缓存是否开启
+            if (FRONT_CACHE) {
+                $this->_tpl->assign('count','<script type="text/javascript">getContentCount();</script>');
+            } else {
+                $this->_tpl->assign('count',$_content->count);
+            }
         } else {
             Tool::alertBack('警告：非法操作！');
         }

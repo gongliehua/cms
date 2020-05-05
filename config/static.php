@@ -6,6 +6,10 @@ header('Content-Type: text/html; charset=UTF-8');
 define('ROOT_PATH',dirname(__DIR__));
 // 引入配置
 require ROOT_PATH.'/config/profile.inc.php';
+
+//如果缓存开启则不执行
+if (!FRONT_CACHE) exit();
+
 // 自动加载
 spl_autoload_register(function($_className){
     if (substr($_className,-6) == 'Action') {
@@ -16,11 +20,7 @@ spl_autoload_register(function($_className){
         require ROOT_PATH.'/includes/'.$_className.'.class.php';
     }
 });
-
-$_id = $_GET['id'];
-$_content = new ContentModel();
-$_content->id = $_id;
-$_count = $_content->getOneContent()->count;
-echo "function get(){
-	document.write('$_count');
-	}";
+$_cache = new Cache();
+if ($_GET['type'] == 'details') {
+	$_cache->details();
+}

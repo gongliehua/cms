@@ -7,7 +7,7 @@
     <title>CMS内容管理系统</title>
     <link rel="stylesheet" href="style/base.css">
     <link rel="stylesheet" href="style/details.css">
-    <script type="text/javascript" src="config/static.php?id={$id}"></script>
+    <script type="text/javascript" src="config/static.php?id={$id}&type=details"></script>
 </head>
 <body>
     {include file="header.tpl"}
