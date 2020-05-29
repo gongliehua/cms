@@ -20,8 +20,9 @@ spl_autoload_register(function($_className){
         require ROOT_PATH.'/includes/'.$_className.'.class.php';
     }
 });
+// 设置不缓存
+$_cache = new Cache(['code','chekup','static','upload','register']);
 // 实例化模板类
 $_tpl = new Templates();
 // 初始化
 require 'common.inc.php';
-

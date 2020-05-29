@@ -1,6 +1,8 @@
+<script type="text/javascript" src="config/static.php?type=header"></script>
 <div id="top">
-    <a href="#">这里可放置文章公告1</a>
-    <a href="#">这里可放置文章公告2</a>
+    {$header}
+    <a href="#" class="adv">这里可放置文章公告1</a>
+    <a href="#" class="adv">这里可放置文章公告2</a>
 </div>
 <div id="header">
     <h1><a href="#">票城web俱乐部</a></h1>

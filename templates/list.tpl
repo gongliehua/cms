@@ -14,6 +14,7 @@
         <h2>当前位置 &gt; {$nav}</h2>
         {if $AllListContent}
         {foreach $AllListContent(key,value)}
+        <script type="text/javascript" src="config/static.php?type=list&id={@value->id}"></script>
         <dl>
             <dt><a href="details.php?id={@value->id}" target="_blank"><img src="{@value->thumbnail}" alt="{@value->title}"></a></dt>
             <dd>[<strong>{@value->nav_name}</strong>] <a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></dd>

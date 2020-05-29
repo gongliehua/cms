@@ -17,7 +17,7 @@
             <label for="">密口码：<input type="password" name="password" class="text"></label>
             <label for="">验证码：<input type="text" name="code" class="text code"></label>
             <img src="images/vdimgck.png" alt="验证码">
-            <p><input type="submit" name="send" class="submit" value="登录"> <a href="#">注册会员</a> <a href="#">忘记密码？</a></p>
+            <p><input type="submit" name="send" class="submit" value="登录"> <a href="register.php?action=reg">注册会员</a> <a href="#">忘记密码？</a></p>
         </form>
         <h3>最近登录会员 <span>—————————————</span></h3>
         <dl>

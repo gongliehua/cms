@@ -37,6 +37,13 @@ class ListAction extends Action {
             $_object = $this->_model->getListContent();
             $_object = Tool::subStr($_object,'info',120,'utf-8');
             $_object = Tool::subStr($_object,'title',30,'utf-8');//35
+            if (IS_CACHE) {
+                if ($_object) {
+                    foreach ($_object as $_value) {
+                        $_value->count = "<script type='text/javascript'>getContentCount();</script>";
+                    }
+                }
+            }
             $this->_tpl->assign('AllListContent',$_object);
         } else {
             Tool::alertBack('警告：非法操作！');

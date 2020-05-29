@@ -40,6 +40,15 @@ class Validate {
         return false;
     }
 
+    // 验证电子邮箱
+    public static function checckEmail($_data)
+    {
+        if (!preg_match('/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/', $_data)) {
+            return true;
+        }
+        return false;
+    }
+
     // session验证
     public static function checkSession()
     {

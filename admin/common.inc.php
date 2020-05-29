@@ -1,4 +1,7 @@
 <?php
 
+// 后台缓存开关
+define('IS_CACHE',false);
+
 // 判断是否开启缓冲区
-if (defined('ADMIN_CACHE') && ADMIN_CACHE) ob_start();
+IS_CACHE ? ob_start() : null;
