@@ -7,43 +7,45 @@
     <title>CMS内容管理系统</title>
     <link rel="stylesheet" href="style/base.css">
     <link rel="stylesheet" href="style/index.css">
+    <script type="text/javascript" src="js/reg.js"></script>
+    <script type="text/javascript" src="config/static.php?type=index"></script>
 </head>
 <body>
     {include file="header.tpl"}
     <div id="user">
-        <h2>会员信息</h2>
-        <form action="">
-            <label for="">用户名：<input type="text" name="username" class="text"></label>
-            <label for="">密口码：<input type="password" name="password" class="text"></label>
-            <label for="">验证码：<input type="text" name="code" class="text code"></label>
-            <img src="images/vdimgck.png" alt="验证码">
-            <p><input type="submit" name="send" class="submit" value="登录"> <a href="register.php?action=reg">注册会员</a> <a href="#">忘记密码？</a></p>
-        </form>
+        {if $cache}
+            {$member}
+        {else}
+            {if $login}
+            <h2>会员登录</h2>
+            <form action="register.php?action=login" method="post" name="login">
+                <label for="">用户名：<input type="text" name="user" class="text"></label>
+                <label for="">密口码：<input type="password" name="pass" class="text"></label>
+                <label for="" class="yzm">验证码：<input type="text" name="code" class="text code">
+                    <img src="config/code.php" alt="captcha" onclick="javascript:this.src='../config/code.php?tm='+Math.random()" class="code"></label>
+                <p><input type="submit" name="send" class="submit" value="登录" onclick="return checkLogin()"> <a href="register.php?action=reg">注册会员</a> <a href="#">忘记密码？</a></p>
+            </form>
+            {else}
+            <h2>会员信息</h2>
+            <div class="a">您好，<strong>{$user}</strong>欢迎光临</div>
+            <div class="b">
+                <img src="images/{$face}" alt="{$user}">
+                <a href="">个人中心</a>
+                <a href="">我的评论</a>
+                <a href="register.php?action=logout">退出登录</a>
+            </div>
+            {/if}
+        {/if}
+        
         <h3>最近登录会员 <span>—————————————</span></h3>
-        <dl>
-            <dt><img src="images/01.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/04.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/12.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/14.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/17.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="images/22.gif" alt="头像"></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
+        {if $AllLaterUser}
+            {foreach $AllLaterUser(key,value)}
+                <dl>
+                    <dt><img src="images/{@value->face}" alt="{@value->user}"></dt>
+                    <dd>{@value->user}</dd>
+                </dl>
+            {/foreach}
+        {/if}
     </div>
     <div id="news">
         <h3><a href="#">我是h3标签</a></h3>

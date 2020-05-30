@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 29/05/2020 16:54:48
+ Date: 30/05/2020 12:51:04
 */
 
 SET NAMES utf8mb4;
@@ -141,20 +141,22 @@ CREATE TABLE `cms_user`  (
   `state` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态',
   `date` datetime(0) NULL DEFAULT NULL COMMENT '时间',
   `face` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
+  `time` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最近登录时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES (1, 'sasda', '53d6b91f1234818f3087368b3898e29fed59c86e', 'ss', '', 's', 1, '2020-05-29 14:07:43', NULL);
-INSERT INTO `cms_user` VALUES (2, '', '39f525d5341f343dd132b66d1e6ec4ac97019e16', '', '', '', 1, '2020-05-29 14:12:36', NULL);
-INSERT INTO `cms_user` VALUES (3, 'sfdadsa', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ss@a.com', '', '', 1, '2020-05-29 14:22:51', NULL);
-INSERT INTO `cms_user` VALUES (4, 'dadsd', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'd@s.com', '', '', 1, '2020-05-29 14:26:54', NULL);
-INSERT INTO `cms_user` VALUES (5, 'dsaaf', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sd@qq.com', '', '', 1, '2020-05-29 14:54:53', NULL);
-INSERT INTO `cms_user` VALUES (6, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1dsa@q.com', '', '', 1, '2020-05-29 15:11:58', NULL);
-INSERT INTO `cms_user` VALUES (7, '黑骑一户', '7c4a8d09ca3762af61e59520943dc26494f8941b', 's@qq.com', '', '', 1, '2020-05-29 15:26:02', NULL);
-INSERT INTO `cms_user` VALUES (8, 'admins', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sd@qq.com', '', '', 1, '2020-05-29 16:50:40', NULL);
-INSERT INTO `cms_user` VALUES (9, 'dsad', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sda@qw.com', '', '', 1, '2020-05-29 16:53:24', '01.gif');
+INSERT INTO `cms_user` VALUES (1, 'sasda', '53d6b91f1234818f3087368b3898e29fed59c86e', 'ss', '', 's', 1, '2020-05-29 14:07:43', '01.gif', NULL);
+INSERT INTO `cms_user` VALUES (2, '1123', '39f525d5341f343dd132b66d1e6ec4ac97019e16', '', '', '', 1, '2020-05-29 14:12:36', '02.gif', NULL);
+INSERT INTO `cms_user` VALUES (3, 'sfdadsa', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ss@a.com', '', '', 1, '2020-05-29 14:22:51', '03.gif', NULL);
+INSERT INTO `cms_user` VALUES (4, 'dadsd', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'd@s.com', '', '', 1, '2020-05-29 14:26:54', '04.gif', NULL);
+INSERT INTO `cms_user` VALUES (5, 'dsaaf', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sd@qq.com', '', '', 1, '2020-05-29 14:54:53', '05.gif', NULL);
+INSERT INTO `cms_user` VALUES (6, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1dsa@q.com', '', '', 1, '2020-05-29 15:11:58', '06.gif', '1590813552');
+INSERT INTO `cms_user` VALUES (7, '黑骑一户', '7c4a8d09ca3762af61e59520943dc26494f8941b', 's@qq.com', '', '', 1, '2020-05-29 15:26:02', '07.gif', NULL);
+INSERT INTO `cms_user` VALUES (8, 'admins', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sd@qq.com', '', '', 1, '2020-05-29 16:50:40', '08.gif', NULL);
+INSERT INTO `cms_user` VALUES (9, 'dsad', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sda@qw.com', '', '', 1, '2020-05-29 16:53:24', '09.gif', NULL);
+INSERT INTO `cms_user` VALUES (10, 'sss', '7c4a8d09ca3762af61e59520943dc26494f8941b', '123@ww.com', '', '', 1, '2020-05-30 12:39:36', '10.gif', '1590813576');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -30,6 +30,9 @@ class Cache
 			case 'header':
 				$this->header();
 				break;
+			case 'index':
+				$this->index();
+				break;
 		}
 	}
 
@@ -51,6 +54,38 @@ class Cache
 		$this->getContentCount($_content);
 	}
 
+	// index
+	public function index()
+	{
+		$_cookie = new Cookie('user');
+		$_user = $_cookie->getCookie();
+		$_user = Tool::subStr($_user,null,8,'utf-8');
+		$_cookie = new Cookie('face');
+		$_face= $_cookie->getCookie();
+		if ($_user && $_face) {
+			$_member = '<h2>会员信息</h2>';
+            $_member .= '<div class="a">您好，<strong>'.$_user.'</strong>欢迎光临</div>';
+            $_member .= '<div class="b">';
+            $_member .= '<img src="images/'.$_face.'" alt="'.$_user.'">';
+            $_member .= '<a href="">个人中心</a>';
+            $_member .= '<a href="">我的评论</a>';
+            $_member .= '<a href="register.php?action=logout">退出登录</a></div>';
+		} else {
+			$_member = '<h2>会员登录</h2>
+            <form action="register.php?action=login" method="post" name="login">
+                <label for="">用户名：<input type="text" name="user" class="text"></label>
+                <label for="">密口码：<input type="password" name="pass" class="text"></label>
+                <label for="" class="yzm">验证码：<input type="text" name="code" class="text code">
+                    <img src="config/code.php" alt="captcha" onclick="javascript:this.src=\'../config/code.php?tm=\'+Math.random()" class="code"></label>
+                <p><input type="submit" name="send" class="submit" value="登录" onclick="return checkLogin()"> <a href="register.php?action=reg">注册会员</a> <a href="#">忘记密码？</a></p>
+            </form>';
+		}
+			echo "function getIndexLogin(){
+	document.write('$_member');
+}";
+	}
+
+	// header
 	public function header()
 	{
 		$_cookie = new Cookie('user');

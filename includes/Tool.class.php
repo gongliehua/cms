@@ -59,10 +59,14 @@ class Tool {
     public static function subStr($_object, $_field, $_length,$_encoding)
     {
         if ($_object) {
-            foreach ($_object as $_value) {
-                if (mb_strlen($_value->$_field,$_encoding) > $_length) {
-                    $_value->$_field = mb_substr($_value->$_field,0,$_length,$_encoding).'...';
+            if (is_array($_object)) {
+                foreach ($_object as $_value) {
+                    if (mb_strlen($_value->$_field,$_encoding) > $_length) {
+                        $_value->$_field = mb_substr($_value->$_field,0,$_length,$_encoding).'...';
+                    }
                 }
+            } else {
+                $_object = mb_substr($_object, 0, $_length, $_encoding);
             }
         }
         return $_object;

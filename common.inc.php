@@ -1,7 +1,7 @@
 <?php
 
 // 前台缓存开关
-define('IS_CACHE',true);
+define('IS_CACHE', false);
 
 if (IS_CACHE && !$_cache->noCache()) {
 	ob_start();

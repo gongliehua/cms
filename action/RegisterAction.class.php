@@ -49,9 +49,14 @@ class RegisterAction extends Action {
     		$this->_model->pass = sha1($_POST['pass']);
     		$this->_model->email = $_POST['email'];
             $this->_model->face = $_POST['face'];
+            $this->_model->time = time();
+            if ($this->_model->checkUser()) Tool::alertBack('警告：用户名重复！');
+            if ($this->_model->checkEmail()) Tool::alertBack('警告：邮箱重复！');
     		if ($this->_model->addUser()) {
     			$_cookie = new Cookie('user', $this->_model->user);
     			$_cookie->setCookie();
+                $_cookie = new Cookie('face', $this->_model->face);
+                $_cookie->setCookie();
     			Tool::alertLocation('恭喜您注册成功','./');
     		} else {
     			Tool::alertBack("很遗憾，注册失败");
@@ -76,10 +81,15 @@ class RegisterAction extends Action {
     		if (Validate::checkLength($_POST['code'],4,'equals')) Tool::alertBack('警告：验证码是4位');
             if (Validate::checkEquals(strtolower($_POST['code']),$_SESSION['code'])) Tool::alertBack('警告：验证码不正确');
     		$this->_model->user = $_POST['user'];
-    		$this->_model->pass = sha1($_POST['pass']);
-    		if ($this->_model->checkLogin()) {
-    			$_cookie = new Cookie('user', $this->_model->user, $_POST['time']);
+            $this->_model->pass = sha1($_POST['pass']);
+    		if (($_user = $this->_model->checkLogin())) {
+                $this->_model->id = $_user->id;
+                $this->_model->time = time();
+                $this->_model->setLaterUser();
+    			$_cookie = new Cookie('user', $_user->user, $_POST['time']);
     			$_cookie->setCookie();
+                $_cookie = new Cookie('face', $_user->face, $_POST['time']);
+                $_cookie->setCookie();
 				Tool::alertLocation(null,'./');
     		} else {
     			Tool::alertBack("警告：用户名或密码错误!");
