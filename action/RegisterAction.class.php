@@ -50,6 +50,7 @@ class RegisterAction extends Action {
     		$this->_model->email = $_POST['email'];
             $this->_model->face = $_POST['face'];
             $this->_model->time = time();
+            $this->_model->state = 1;
             if ($this->_model->checkUser()) Tool::alertBack('警告：用户名重复！');
             if ($this->_model->checkEmail()) Tool::alertBack('警告：邮箱重复！');
     		if ($this->_model->addUser()) {

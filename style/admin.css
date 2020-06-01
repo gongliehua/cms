@@ -108,6 +108,21 @@ ul,ol {
 #main table.cke_dialog {
     width: auto;
 }
+#main table.user {
+    text-align: left;
+}
+#main table.user span.reg {
+    color: red;
+}
+#main table.user tr td select {
+    width: 220px;
+    height: 22px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+#main table.user tr td img.face {
+    margin: 0 0 0 60px;
+}
 #main table.left {
     text-align: left;
 }
