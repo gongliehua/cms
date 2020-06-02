@@ -75,6 +75,7 @@ class ContentModel extends Model {
                       c.thumbnail,
                       c.date,
                       c.count,
+                      c.gold,
                       n.nav_name
                 FROM 
                           cms_content c,

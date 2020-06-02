@@ -19,6 +19,12 @@ class Tool {
         exit("<script type='text/javascript'>alert('$_info');history.back();</script>");
     }
 
+    // 弹出关闭
+    public static function alertClose($_info)
+    {
+        exit("<script type='text/javascript'>alert('$_info');close();</script>");
+    }
+
     // 弹窗赋值关闭(上传专用)
     public static function alertOpenerClose($_info,$_path)
     {

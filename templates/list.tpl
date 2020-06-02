@@ -14,11 +14,11 @@
         <h2>当前位置 &gt; {$nav}</h2>
         {if $AllListContent}
         {foreach $AllListContent(key,value)}
-        <script type="text/javascript" src="config/static.php?type=list&id={@value->id}"></script>
+        <!-- <script type="text/javascript" src="config/static.php?type=list&id={@value->id}"></script> -->
         <dl>
             <dt><a href="details.php?id={@value->id}" target="_blank"><img src="{@value->thumbnail}" alt="{@value->title}"></a></dt>
             <dd>[<strong>{@value->nav_name}</strong>] <a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></dd>
-            <dd>日期: {@value->date} 点击率: {@value->count} 好评: 0</dd>
+            <dd>日期: {@value->date} 点击率: {@value->count} 消费金币: {@value->gold}</dd>
             <dd>核心提示：{@value->info}</dd>
         </dl>
         {/foreach}

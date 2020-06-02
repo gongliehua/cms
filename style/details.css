@@ -38,6 +38,93 @@
 	line-height: 250%;
 	word-wrap: break-word;
 }
+#details div.d4 {
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+#details div.d5 {
+	margin: 10px 0;
+	padding: 8px;
+	border: 1px solid #ccc;
+	clear: both;
+}
+#details div.d5 p {
+	margin: 10px 0;
+}
+#details div.d5 p.red {
+	color: red;
+}
+#details div.d5 textarea {
+	width: 650px;
+	height: 150px;
+	background: #eee;
+	border: 1px dashed #ccc;
+}
+#details div.d5 p input.text {
+	width: 80px;
+	height: 20px;
+	border: 1px dashed #eee;
+	background: #eee;
+}
+#details div.d5 p img.code {
+	width: 78px;
+	height: 30px;
+	position: relative;
+	top: 10px;
+	cursor: pointer;
+}
+#details div.d5 p input.submit {
+	width: 80px;
+	height: 25px;
+	cursor: pointer;
+}
+#details div.d6 {
+	width: 688px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	float: left;
+}
+#details div.d6 h2 {
+	border: none;
+}
+#details div.d6 h2 a {
+	float: right;
+	font-weight: normal;
+	padding-right: 10px;
+	color: #666;
+}
+#details div.d6 h2 a span {
+	color: red;
+}
+#details dl {
+	width: 670px;
+	margin: 10px 0;
+	margin-left: 8px;
+	float: left;
+	border-bottom: 1px dashed #ccc;
+}
+#details dl dd.info {
+	font-size: 12px;
+	line-height: 150%;
+}
+#details dl dd.bottom {
+	text-align: right;
+}
+#details dl dt {
+	float: left;
+}
+#details dl dd span {
+	color: #06f;
+}
+#details dl dd {
+	float: right;
+	width: 585px;
+	padding: 0 0 10px 10px;
+}
+#details dl dd em{
+	float: right;
+	font-style: normal;
+}
 #sidebar {
 	width: 260px;
 	min-height: 600px;

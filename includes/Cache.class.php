@@ -24,9 +24,10 @@ class Cache
 			case 'details':
 				$this->details();
 				break;
+			/*
 			case 'list':
 				$this->listc();
-				break;
+				break;*/
 			case 'header':
 				$this->header();
 				break;
@@ -43,6 +44,9 @@ class Cache
 		$_content->id = $_GET['id'];
 		$this->setContentCount($_content);
 		$this->getContentCount($_content);
+		$_comment = new CommentModel();
+		$_comment->cid = $_content->id;
+		$this->getComment($_comment);
 	}
 
 	// list
@@ -108,10 +112,19 @@ class Cache
 	}
 
 	//获取
-	private function getContentCount($_content)
+	private function getContentCount(&$_content)
 	{
 		$_count = $_content->getOneContent()->count;
 		echo "function getContentCount(){
+	document.write('$_count');
+}";
+	}
+
+	//获取评总量
+	private function getComment(&$_comment)
+	{
+		$_count = $_comment->getCommentTotal();
+		echo "function getComment(){
 	document.write('$_count');
 }";
 	}
