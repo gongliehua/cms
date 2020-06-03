@@ -41,39 +41,33 @@
             {/if}
         </div>
         <div class="right">
-            <h2>本类推荐</h2>
+            <h2>本月本类推荐</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {if $MonthNavRec}
+                    {foreach $MonthNavRec(key,value)}
+                        <li><em>{@value->date}</em><a href="details.php?id={@value->id}">{@value->title}</a></li>
+                    {/foreach}
+                {/if}
             </ul>
         </div>
         <div class="right">
-            <h2>本类热点</h2>
+            <h2>本月本类热点</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {if $MonthNavHot}
+                    {foreach $MonthNavHot(key,value)}
+                        <li><em>{@value->date}</em><a href="details.php?id={@value->id}">{@value->title}</a></li>
+                    {/foreach}
+                {/if}
             </ul>
         </div>
         <div class="right">
-            <h2>本类图文</h2>
+            <h2>本月本类图文</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {if $MonthNavPic}
+                    {foreach $MonthNavPic(key,value)}
+                        <li><em>{@value->date}</em><a href="details.php?id={@value->id}">{@value->title}</a></li>
+                    {/foreach}
+                {/if}
             </ul>
         </div>
     </div>

@@ -34,6 +34,7 @@ class ListAction extends Action {
 
             parent::page($this->_model->getListContentTotal(),ARTICLE_SIZE);
 
+            //列表
             $_object = $this->_model->getListContent();
             $_object = Tool::subStr($_object,'info',120,'utf-8');
             $_object = Tool::subStr($_object,'title',30,'utf-8');//35
@@ -45,9 +46,38 @@ class ListAction extends Action {
                     }
                 }
             }*/
+            if ($_object) {
+                foreach ($_object as $_value) {
+                    if (empty($_value->thumbnail)) {
+                        $_value->thumbnail = 'images/none.jpg';
+                    }
+                }
+            }
             $this->_tpl->assign('AllListContent',$_object);
+
+            // 本月排行榜
+            $_object = $this->_model->getMonthNavRec();
+            $this->setObject($_object);
+            $this->_tpl->assign('MonthNavRec',$_object);
+            // 本月热点
+            $_object = $this->_model->getMonthNavHot();
+            $this->setObject($_object);
+            $this->_tpl->assign('MonthNavHot',$_object);
+            // 本月图文
+            $_object = $this->_model->getMonthNavPic();
+            $this->setObject($_object);
+            $this->_tpl->assign('MonthNavPic',$_object);
         } else {
             Tool::alertBack('警告：非法操作！');
+        }
+    }
+
+    //setObject
+    private function setObject(&$_object)
+    {
+        if ($_object) {
+            $_object = Tool::subStr($_object,'title',15,'utf-8');
+            Tool::objDate($_object,'date');
         }
     }
 

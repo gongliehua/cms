@@ -33,6 +33,95 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
+    //获取本月、本类、推荐排行榜 10条
+    public function getMonthNavRec()
+    {
+      $_sql = "SELECT 
+                      id,
+                      title,
+                      date
+                FROM 
+                      cms_content 
+                WHERE 
+                      nav IN($this->nav)
+                  AND
+                      MONTH(NOW())=DATE_FORMAT(date,'%c')
+                  AND
+                      attr LIKE '%推荐%'
+              ORDER BY 
+                      date DESC 
+                LIMIT 
+                      0,10";
+      return parent::all($_sql);
+    }
+
+    //获取本月、本类、热点排行榜 10条
+    public function getMonthNavHot()
+    {
+      $_sql = "SELECT 
+                      ct.id,
+                      ct.title,
+                      ct.date
+                FROM 
+                      cms_content ct
+                WHERE 
+                      ct.nav IN($this->nav)
+                  AND
+                      MONTH(NOW())=DATE_FORMAT(ct.date,'%c')
+              ORDER BY 
+                      (SELECT 
+                            COUNT(*) 
+                      FROM 
+                            cms_comment c 
+                      WHERE 
+                            c.cid=ct.id) DESC
+                LIMIT 
+                      0,10";
+      return parent::all($_sql);
+    }
+
+    //获取本月、本类、图片排行榜 10条
+    public function getMonthNavPic()
+    {
+      $_sql = "SELECT 
+                      id,
+                      title,
+                      date
+                FROM 
+                      cms_content ct
+                WHERE 
+                      nav IN($this->nav)
+                  AND
+                      MONTH(NOW())=DATE_FORMAT(date,'%c')
+                  AND
+                      thumbnail<>''
+              ORDER BY 
+                      date DESC
+                LIMIT 
+                      0,10";
+      return parent::all($_sql);
+    }
+
+    // 获取总排行榜 文档的评论量从大到小 20条
+    public function getHotTwentyComment()
+    {
+      $_sql = "SELECT 
+                      ct.id,
+                      ct.title 
+                FROM 
+                      cms_content ct
+                ORDER BY
+                      (SELECT 
+                            COUNT(*) 
+                      FROM 
+                            cms_comment c 
+                      WHERE 
+                            c.cid=ct.id) DESC
+                LIMIT 
+                      0,20";
+      return parent::all($_sql);
+    }
+
     //累计文档的点击量
     public function setContentCount()
     {

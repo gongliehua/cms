@@ -22,26 +22,6 @@ class CommentModel extends Model {
         return $this->$_key;
     }
 
-    // 获取总排行榜 文档的评论量从大到小 20条
-    public function getHotTwentyComment()
-    {
-      $_sql = "SELECT 
-                      ct.id,
-                      ct.title 
-                FROM 
-                      cms_content ct
-                ORDER BY
-                      (SELECT 
-                            COUNT(*) 
-                      FROM 
-                            cms_comment c 
-                      WHERE 
-                            c.cid=ct.id) DESC
-                LIMIT 
-                      0,20";
-      return parent::all($_sql);
-    }
-
     // 获取最火3条评论,如果其中有支持+反对就不现实出来
     public function getHotThreeComment()
     {

@@ -64,7 +64,7 @@ class FeedBackAction extends Action {
             parent::page($this->_model->getCommentTotal());
             $_object = $this->_model->getAllComment();
             $_object2 = $this->_model->getHotThreeComment();
-            $_object3 = $this->_model->getHotTwentyComment();
+            $_object3 = $_content->getHotTwentyComment();
             $this->setObject($_object);
             $this->setObject($_object2);
             $_content->id = $this->_model->cid;

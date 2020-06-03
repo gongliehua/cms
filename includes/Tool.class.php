@@ -49,6 +49,16 @@ class Tool {
         return htmlspecialchars_decode($_str);
     }
 
+    // 日期转换
+    public static function objDate(&$_object,$_field)
+    {
+        if ($_object) {
+            foreach ($_object as $_value) {
+                $_value->$_field = date('m-d', strtotime($_value->$_field));
+            }
+        }
+    }
+
     //将对象数组转换成字符串,并去掉最后的逗号
     public static function objArrOfStr($_object,$_field)
     {
