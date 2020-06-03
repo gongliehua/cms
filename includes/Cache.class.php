@@ -44,9 +44,10 @@ class Cache
 		$_content->id = $_GET['id'];
 		$this->setContentCount($_content);
 		$this->getContentCount($_content);
+		/*
 		$_comment = new CommentModel();
 		$_comment->cid = $_content->id;
-		$this->getComment($_comment);
+		$this->getComment($_comment);*/
 	}
 
 	// list

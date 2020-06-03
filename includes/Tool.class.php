@@ -82,7 +82,11 @@ class Tool {
                     }
                 }
             } else {
-                $_object = mb_substr($_object, 0, $_length, $_encoding);
+                if (mb_strlen($_object,$_encoding) > $_length) {
+                    $_object = mb_substr($_object, 0, $_length, $_encoding).'...';
+                } else {
+                    $_object = mb_substr($_object, 0, $_length, $_encoding);
+                }               
             }
         }
         return $_object;

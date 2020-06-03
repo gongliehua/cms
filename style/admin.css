@@ -111,8 +111,11 @@ ul,ol {
 #main table.user {
     text-align: left;
 }
-#main table.user span.reg {
+#main table span.reg,#main table span.red {
     color: red;
+}
+#main table span.green {
+    color: green;
 }
 #main table.user tr td select {
     width: 220px;

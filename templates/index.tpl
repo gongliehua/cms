@@ -48,22 +48,21 @@
         {/if}
     </div>
     <div id="news">
-        <h3><a href="#">我是h3标签</a></h3>
-        <p>橄榄枝是油橄榄的树枝，橄榄枝象征和平。圣经故事中曾用它作为大地复苏的标志，后来西方国家把它用作和平象征。《圣经·创世纪》记述：“此事发生在2月17日。这一天，巨大的深渊之源全部冲决，天窗大开，大雨40天40夜浇注到大地上。”诺亚和他的妻子乘坐方舟，在大洪水中漂流了40天以后，搁浅在高山上。为了探知大洪水是否退去，诺亚先是放出乌鸦，随后又两次放出鸽子，直到他第二次放出的鸽子衔回橄榄枝后，说明洪水已经退去。<a href="#">[查看全文]</a></p>
+        <h3><a href="details.php?id={$TopId}">{$TopTitle}</a></h3>
+        <p>{$TopInfo}<a href="details.php?id={$TopId}">[查看全文]</a></p>
         <p class="link">
-            <a href="#">橄榄枝象征和平橄榄枝象征和平</a>|
-            <a href="#">橄榄枝象征和平橄榄枝象征和平</a>
-            <a href="#">橄榄枝象征和平橄榄枝象征和平</a>|
-            <a href="#">橄榄枝象征和平橄榄枝象征和平</a>
+            {if $NewTopList}
+                {foreach $NewTopList(key,value)}
+                    <a href="details.php?id={@value->id}" target="_blank">{@value->title}</a> {@value->line}
+                {/foreach}
+            {/if}
         </p>
         <ul>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
-            <li><em>11-06-02</em><a href="#">圣经故事中曾平橄榄平橄榄作为大地复苏的平橄榄标志</a></li>
+            {if $NewList}
+                {foreach $NewList(key,value)}
+                    <li><em>{@value->date}</em><a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
     <div id="pic">
@@ -72,13 +71,11 @@
     <div id="rec">
         <h2>特别推荐</h2>
         <ul>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+            {if $NewRecList}
+                {foreach $NewRecList(key,value)}
+                    <li><em>{@value->date}</em><a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
     <div id="sidebar-right">
@@ -86,25 +83,21 @@
         <div class="hot">
             <h2>本月热点</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {if $MonthHotList}
+                    {foreach $MonthHotList(key,value)}
+                        <li><em>{@value->date}</em><a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                    {/foreach}
+                {/if}
             </ul>
         </div>
         <div class="comm">
             <h2>本月评论</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {if $MonthCommentList}
+                    {foreach $MonthCommentList(key,value)}
+                        <li><em>{@value->date}</em><a href="details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                    {/foreach}
+                {/if}
             </ul>
         </div>
         <div class="vote">
@@ -121,88 +114,30 @@
     </div>
     <div id="picnews">
         <h2>图文资讯</h2>
-        <dl>
-            <dt><a href="#"><img src="images/pic1.png" alt="标题"></a></dt>
-            <dd><a href="#">以色列总理以色列总理出访发过出访发过</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="#"><img src="images/pic2.png" alt="标题"></a></dt>
-            <dd><a href="#">以色列总理出访发过以色列总理出访发过</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="#"><img src="images/pic3.png" alt="标题"></a></dt>
-            <dd><a href="#">以色列总理出访发过以色列总理出访发过</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="#"><img src="images/pic4.png" alt="标题"></a></dt>
-            <dd><a href="#">以色列总理出访发过以色列总理出访发过</a></dd>
-        </dl>
+        {if $PicList}
+            {foreach $PicList(key,value)}
+                <dl>
+                    <dt><a href="details.php?id={@value->id}"><img src="{@value->thumbnail}" alt="{@value->title}"></a></dt>
+                    <dd><a href="details.php?id={@value->id}">{@value->title}</a></dd>
+                </dl>
+            {/foreach}
+        {/if}
     </div>
     <div id="newslist">
-        <div class="list bottom">
-            <h2><a href="#">更多</a>军事动态</h2>
+        {if $FourNav}
+            {foreach $FourNav(key,value)}
+        <div class="list bottom {@value->class}">
+            <h2><a href="list.php?id={@value->id}" target="_blank">更多</a>{@value->nav_name}</h2>
             <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
+                {iff @value->list}
+                {for @value->list(key,value)}
+                <li><em>{@value->date}</em><a href="details.php?id={@value->id}">{@value->title}</a></li>
+                {/for}
+                {/iff}
             </ul>
         </div>
-        <div class="list right bottom">
-            <h2><a href="#">更多</a>八卦娱乐</h2>
-            <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            </ul>
-        </div>
-        <div class="list">
-            <h2><a href="#">更多</a>时尚女人</h2>
-            <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            </ul>
-        </div>
-        <div class="list right">
-            <h2><a href="#">更多</a>科技频道</h2>
-            <ul>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-                <li><em>06-21</em><a href="#">特别推荐女人尚别推荐女人尚别推...</a></li>
-            </ul>
-        </div>
+            {/foreach}
+        {/if}
     </div>
     {include file='footer.tpl'}
 </body>

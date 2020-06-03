@@ -35,7 +35,7 @@ class DetailsAction extends Action {
             // 判断缓存是否开启
             if (IS_CACHE) {
                 $this->_tpl->assign('count','<script type="text/javascript">getContentCount();</script>');
-                $this->_tpl->assign('comment','<script type="text/javascript">getComment();</script>');
+                //$this->_tpl->assign('comment','<script type="text/javascript">getComment();</script>');
             } else {
                 $this->_tpl->assign('comment', $_comment->getCommentToTal());
                 $this->_tpl->assign('count',$_content->count);

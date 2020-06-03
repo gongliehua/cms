@@ -21,6 +21,23 @@ class NavModel extends Model {
         return $this->$_key;
     }
 
+    // 获取前四个主导航
+    public function getFourNav()
+    {
+        $_sql = "SELECT 
+                        id,
+                        nav_name 
+                    FROM 
+                        cms_nav 
+                WHERE 
+                        pid=0 
+            ORDER BY 
+                    sort ASC
+                LIMIT 
+                        0,4";
+        return parent::all($_sql);
+    }
+
     //获取所有非主类的id
     public function getAllNavChildId()
     {

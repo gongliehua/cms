@@ -33,6 +33,155 @@ class ContentModel extends Model {
         return $this->$_key;
     }
 
+    // 获取主栏目所有最新11条的最新文档
+    public function getNewNavList()
+    {
+      $_sql = "SELECT 
+                      id,
+                      title,
+                      date 
+                FROM 
+                      cms_content 
+                WHERE
+                      nav IN (SELECT id FROM cms_nav WHERE pid='$this->nav')
+                ORDER BY 
+                      date DESC 
+                LIMIT 
+                      0,11";
+      return parent::all($_sql);
+    }
+
+    // 获取最新的10条文档
+    public function getNewList()
+    {
+      $_sql = "SELECT 
+                        id,
+                        title,
+                        date 
+                FROM 
+                      cms_content 
+                ORDER BY 
+                        date DESC 
+                LIMIT 
+                      0,10";
+      return parent::all($_sql);
+    }
+
+    // 获取最新的一条头条
+    public function getNewTop()
+    {
+        $_sql = "SELECT 
+                        id,
+                        title,
+                        info,
+                        date 
+                FROM 
+                      cms_content 
+                WHERE 
+                      attr LIKE '%头条%'
+                ORDER BY 
+                        date DESC 
+                LIMIT 
+                      1";
+      return parent::one($_sql);
+    }
+
+    // 获取最新的地条到第三条第五条头条
+    public function getNewTopList()
+    {
+      $_sql = "SELECT 
+                        id,
+                        title,
+                        info,
+                        date 
+                FROM 
+                      cms_content 
+                WHERE 
+                      attr LIKE '%头条%'
+                ORDER BY 
+                        date DESC 
+                LIMIT 
+                      1,4";
+      return parent::all($_sql);
+    }
+
+    // 获取最新的4条图文资讯
+    public function getPicList()
+    {
+      $_sql = "SELECT 
+                      id,
+                      title,
+                      thumbnail 
+                FROM 
+                      cms_content 
+                WHERE 
+                      thumbnail<>'' 
+              ORDER BY 
+                      date DESC 
+                LIMIT 
+                      0,4";
+      return parent::all($_sql);
+    }
+
+    // 获取本月的评论,总排行，7条
+    public function getMonthCommentList()
+    {
+      $_sql = "SELECT 
+                      ct.id,
+                      ct.title,
+                      ct.date 
+                FROM
+                      cms_content ct
+                  WHERE
+                      MONTH(NOW())=DATE_FORMAT(ct.date,'%c')
+              ORDER BY 
+                      (SELECT 
+                            COUNT(*) 
+                      FROM 
+                            cms_comment c 
+                      WHERE 
+                            c.cid=ct.id) DESC
+                LIMIT 
+                      0,7";
+      return parent::all($_sql);
+    }
+
+    // 获取本月的热点（点击量）,总排行，7条
+    public function getMonthHotList()
+    {
+      $_sql = "SELECT 
+                      id,
+                      title,
+                      date 
+                FROM
+                      cms_content 
+                  WHERE
+                      MONTH(NOW())=DATE_FORMAT(date,'%c')
+              ORDER BY 
+                      count DESC
+                LIMIT 
+                      0,7";
+      return parent::all($_sql);
+    }
+
+    // 获取最新的7条推荐文档
+    public function getNewRecList()
+    {
+      $_sql = "SELECT 
+                        id,
+                        title,
+                        date 
+                FROM 
+                      cms_content 
+                WHERE 
+                      attr LIKE '%推荐%' 
+                ORDER BY 
+                        date DESC 
+                LIMIT 
+                      0,7";
+      return parent::all($_sql);
+    }
+
     //获取本月、本类、推荐排行榜 10条
     public function getMonthNavRec()
     {
