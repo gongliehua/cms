@@ -66,7 +66,16 @@
         </ul>
     </div>
     <div id="pic">
-        <img src="images/adverleft.png" alt="新闻图片">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="scriptmain" name="scriptmain" codebase="http://download.macromedia.com/pub/shockwave/cabs/
+    flash/swflash.cab#version=6,0,29,0" width="268" height="193">
+          <param name="movie" value="images/lbxml.swf">
+          <param name="quality" value="high">
+          <param name="scale" value="noscale">
+          <param name="LOOP" value="false">
+          <param name="menu" value="false">
+          <param name="wmode" value="transparent">
+          <embed src="images/lbxml.swf" width="268" height="193" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent">
+    </object>
     </div>
     <div id="rec">
         <h2>特别推荐</h2>
@@ -79,7 +88,9 @@
         </ul>
     </div>
     <div id="sidebar-right">
-        <div class="adver"><img src="images/adver2.png" alt="广告图"></div>
+        <div class="adver">
+            <script type="text/javascript" src="js/sidebar_adver.js"></script>
+        </div>
         <div class="hot">
             <h2>本月热点</h2>
             <ul>

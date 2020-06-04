@@ -1,12 +1,13 @@
 <script type="text/javascript" src="config/static.php?type=header"></script>
 <div id="top">
     {$header}
-    <a href="#" class="adv">这里可放置文章公告1</a>
-    <a href="#" class="adv">这里可放置文章公告2</a>
+    <script type="text/javascript" src="js/text_adver.js"></script>
 </div>
 <div id="header">
     <h1><a href="#">票城web俱乐部</a></h1>
-    <div class="adver"><a href="#"><img src="images/adver.png" alt="广告图"></a></div>
+    <div class="adver">
+        <script type="text/javascript" src="js/header_adver.js"></script>
+    </div>
 </div>
 <div id="nav">
     <ul>

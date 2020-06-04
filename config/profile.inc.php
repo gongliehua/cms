@@ -19,3 +19,12 @@ define('MARK',ROOT_PATH.'/images/yc.png');		//水印图片
 define('TPL_DIR',ROOT_PATH.'/templates/');		//模板文件目录
 define('TPL_C_DIR',ROOT_PATH.'/templates_c/');	//编译文件目录
 define('CACHE_DIR',ROOT_PATH.'/cache/');		//缓存文件目录
+
+// 轮播器配置
+define('RO_TIME', 3);							//轮播器的时间
+define('RO_NUM', 3);							//轮播器的个数
+
+// 广告服务
+define('ADVER_TEXT_NUM', 5);					//最多文字广告数
+define('ADVER_PIC_NUM', 3);						//最多图片广告数
+

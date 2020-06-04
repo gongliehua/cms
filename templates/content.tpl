@@ -54,7 +54,7 @@
             <tr><td>标口口签: <input type="text" name="tag" class="text">(*每个标签用','隔开,总长30位之内)</td></tr>
             <tr><td>关键字口: <input type="text" name="keyword" class="text">(*每个关键字用','隔开,总长30位之内)</td></tr>
             <tr><td>略缩图口: <input type="text" name="thumbnail" class="text" readonly>
-                    <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html','upfile','600','180')">
+                    <input type="button" value="上传缩略图" onclick="centerWindow('../config/upfile.php?type=content','upfile','600','180')">
                     <img src="" alt="" style="display: none;" name="pic">(*必须是jpg,gif,png，并且200k内)
             </td></tr>
             <tr><td>文章来源: <input type="text" name="source" class="text">(*文章来源20位之内)</td></tr>

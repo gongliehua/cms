@@ -50,12 +50,9 @@ class CommentAction extends Action {
             }
         }
         $this->_tpl->assign('CommentList',$_object);
-        /*
-        $this->_tpl->assign('page',$_page->showPage());
-        */
     }
 
-    // state单词审核
+    // state单次审核
     private function state() {
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
