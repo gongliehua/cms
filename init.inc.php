@@ -21,7 +21,7 @@ spl_autoload_register(function($_className){
     }
 });
 // 设置不缓存
-$_cache = new Cache(['code','chekup','static','upload','register','feedback']);
+$_cache = new Cache(['code','chekup','static','upload','register','feedback','cast']);
 // 实例化模板类
 $_tpl = new Templates();
 // 初始化

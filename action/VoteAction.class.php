@@ -60,9 +60,12 @@ class VoteAction extends Action {
         $_object = $this->_model->getAllVote();
         foreach ($_object as $_value) {
             if (empty($_value->state)) {
-                $_value->state = '<span class="red">[否]</span> | <a href="vote.php?action=state&type=ok&id='.$_value->id.'">首选</a>';
+                $_value->state = '<span class="red">[否]</span> | <a href="vote.php?action=state&type=ok&id='.$_value->id.'">确认</a>';
             } else {
-                $_value->state = '<span class="green">[是]</span> | <a href="javascript:;">确认</a>';
+                $_value->state = '<span class="green">[是]</span> | <a href="javascript:;">首选</a>';
+            }
+            if (empty($_value->people_num)) {
+                $_value->people_num = 0;
             }
         }
         $this->_tpl->assign('AllVote',$_object);
@@ -80,7 +83,7 @@ class VoteAction extends Action {
                 if ($this->_model->setStateOk()) {
                     Tool::alertLocation(null,'vote.php?action=show');
                 } else {
-                    Tool::alertBack('警告：首选失败！');
+                    Tool::alertBack('警告：确认失败！');
                 }
             } else {
                 Tool::alertBack('警告：非常操作！');

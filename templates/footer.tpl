@@ -1,5 +1,5 @@
 <div id="link">
-    <h2><span><a href="#">所有链接</a> | <a href="#">申请加入</a></span>友情链接</h2>
+    <h2><span><a href="firendlink.php?action=frontshow" target="_blank">所有链接</a> | <a href="firendlink.php?action=frontadd" target="_blank">申请加入</a></span>友情链接</h2>
     <ul>
         <li><a href="#">网易新闻</a></li>
         <li><a href="#">百度搜索</a></li>

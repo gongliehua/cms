@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 05/06/2020 18:30:46
+ Date: 06/06/2020 00:34:55
 */
 
 SET NAMES utf8mb4;
@@ -282,9 +282,9 @@ CREATE TABLE `cms_vote`  (
 -- ----------------------------
 -- Records of cms_vote
 -- ----------------------------
-INSERT INTO `cms_vote` VALUES (8, '你l', '', 7, 0, 0, '2020-06-05 17:32:05');
+INSERT INTO `cms_vote` VALUES (8, '你l', '', 7, 4, 0, '2020-06-05 17:32:05');
 INSERT INTO `cms_vote` VALUES (7, '谁最漂亮1', '1c', 0, 0, 1, '2020-06-05 17:31:45');
-INSERT INTO `cms_vote` VALUES (9, '我l', '1', 7, 5, 0, '2020-06-05 17:32:13');
+INSERT INTO `cms_vote` VALUES (9, '我l', '1', 7, 20, 0, '2020-06-05 17:32:13');
 INSERT INTO `cms_vote` VALUES (10, 'fdsa', 'sfad', 0, 0, 0, '2020-06-05 17:46:55');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -38,6 +38,7 @@
             <th>投票主题</th>
             <th>投票项目</th>
             <th>是否前台首选</th>
+            <th>参与人数</th>
             <th>操作</th>
         </tr>
 
@@ -48,6 +49,7 @@
                 <td>{@value->title}</td>
                 <td><a href="vote.php?action=showchild&id={@value->id}">查看</a> | <a href="vote.php?action=addchild&id={@value->id}">增加项目</a></td>
                 <td>{@value->state}</td>
+                <td>{@value->people_num}</td>
                 <td><a href="vote.php?action=update&id={@value->id}">编辑</a> <a href="vote.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个投票主题吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
@@ -66,6 +68,7 @@
         <tr>
             <th>编号</th>
             <th>投票项目</th>
+            <th>得票数</th>
             <th>操作</th>
         </tr>
 
@@ -74,15 +77,16 @@
             <tr>
                 <td>{@value->id}</td>
                 <td>{@value->title}</td>
+                <td>{@value->count}</td>
                 <td><a href="vote.php?action=update&id={@value->id}">编辑</a> <a href="vote.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个投票项目吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
         {else}
             <tr>
-                <td colspan="3">对不起，没有任何数据</td>
+                <td colspan="4">对不起，没有任何数据</td>
             </tr>
         {/if}
-        <tr><td colspan="3">所属主题：<strong>{$titlec}</strong> [<a href="vote.php?action=addchild&id={$id}">增加本项</a>][<a href="vote.php?action=show">返回列表</a>]</td></tr>
+        <tr><td colspan="4">所属主题：<strong>{$titlec}</strong> [<a href="vote.php?action=addchild&id={$id}">增加本项</a>][<a href="vote.php?action=show">返回列表</a>]</td></tr>
 
     </table>
     <div id="page">{$page}</div>

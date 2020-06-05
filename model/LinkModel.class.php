@@ -1,14 +1,8 @@
 <?php
 
-// 投票实体类
-class VoteModel extends Model {
+// 友情链接实体类
+class LinkModel extends Model {
     private $id;
-    private $title;
-    private $info;
-    private $vid;
-    private $count;
-    private $state;
-    private $date;
     private $limit;
 
     // 拦截器
@@ -22,7 +16,7 @@ class VoteModel extends Model {
     {
         return $this->$_key;
     }
-
+/*
     // 累计投票
     public function setCount()
     {
@@ -214,5 +208,5 @@ class VoteModel extends Model {
                             vid='$this->id'
                             ";
         return parent::aud($_sql);
-    }
+    }*/
 }
