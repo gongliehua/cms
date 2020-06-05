@@ -13,6 +13,14 @@ class IndexAction extends Action {
         $this->login();
         $this->laterUser();
         $this->showList();
+        $this->getVote();
+    }
+
+    // 获取投票
+    private function getVote() {
+        $_vote = new VoteModel();
+        $this->_tpl->assign('vote_title', $_vote->getVoteTitleOne()->title);
+        $this->_tpl->assign('vote_item',$_vote->getVoteItem());
     }
 
     // 最近登录的会员

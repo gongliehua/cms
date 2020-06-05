@@ -113,13 +113,17 @@
         </div>
         <div class="vote">
             <h2>本月投票</h2>
-            <h3>请问您是怎么知道本站的？</h3>
-            <form action="">
-                <label><input type="radio" name="vote" checked> 门户网站</label>
-                <label><input type="radio" name="vote"> Google或百度搜索</label>
-                <label><input type="radio" name="vote"> 别的网站上的链接</label>
-                <label><input type="radio" name="vote"> 朋友介绍或电视广告</label>
-                <p><input type="submit" name="send" value="投票"> <input type="button" value="查看"></p>
+            <h3>{$vote_title}</h3>
+            <form action="cast.php" method="post" target="_blank">
+                {if $vote_item}
+                {foreach $vote_item(key,value)}
+                <label><input type="radio" name="vote" value="{@value->id}"> {@value->title}</label>
+                {/foreach}
+                {/if}
+                <p>
+                    <input type="submit" name="send" value="投票">
+                    <input type="button" onclick="window.open('cast.php')" value="查看">
+                </p>
             </form>
         </div>
     </div>

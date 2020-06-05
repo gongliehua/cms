@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 05/06/2020 02:41:05
+ Date: 05/06/2020 18:30:46
 */
 
 SET NAMES utf8mb4;
@@ -173,7 +173,7 @@ CREATE TABLE `cms_manage`  (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES (1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 6, 20, '127.0.0.1', '2020-06-04 16:12:27', NULL);
+INSERT INTO `cms_manage` VALUES (1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 6, 21, '127.0.0.1', '2020-06-05 16:08:49', NULL);
 INSERT INTO `cms_manage` VALUES (2, 'user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 5, 0, '', NULL, NULL);
 INSERT INTO `cms_manage` VALUES (3, 'guest', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1, 0, '', NULL, NULL);
 
@@ -263,5 +263,28 @@ INSERT INTO `cms_user` VALUES (10, 'sss', '7c4a8d09ca3762af61e59520943dc26494f89
 INSERT INTO `cms_user` VALUES (11, 'dfsa', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ss@qq.com', '', '', 1, '2020-06-01 15:50:36', '01.gif', '');
 INSERT INTO `cms_user` VALUES (12, 'fads', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'd@q.com', '', '', 1, '2020-06-01 15:51:51', '01.gif', '');
 INSERT INTO `cms_user` VALUES (13, 'dfsasss', '01b307acba4f54f55aafc33bb06bbbf6ca803e9a', 'monster@nata.com', '您配偶的性别？', '女', 5, '2020-06-01 15:58:11', '21.gif', '');
+
+-- ----------------------------
+-- Table structure for cms_vote
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_vote`;
+CREATE TABLE `cms_vote`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标题',
+  `info` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '简介',
+  `vid` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否为主题',
+  `count` int(11) NOT NULL DEFAULT 0 COMMENT '投票数',
+  `state` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否前台首选',
+  `date` datetime(0) NULL DEFAULT NULL COMMENT '时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '投票' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cms_vote
+-- ----------------------------
+INSERT INTO `cms_vote` VALUES (8, '你l', '', 7, 0, 0, '2020-06-05 17:32:05');
+INSERT INTO `cms_vote` VALUES (7, '谁最漂亮1', '1c', 0, 0, 1, '2020-06-05 17:31:45');
+INSERT INTO `cms_vote` VALUES (9, '我l', '1', 7, 5, 0, '2020-06-05 17:32:13');
+INSERT INTO `cms_vote` VALUES (10, 'fdsa', 'sfad', 0, 0, 0, '2020-06-05 17:46:55');
 
 SET FOREIGN_KEY_CHECKS = 1;
