@@ -21,112 +21,75 @@ class FirendLinkAction extends Action {
             case 'frontadd':
                 $this->frontadd();
                 break;
-            case 'show':
-                $this->show();
-                break;
-            case 'add':
-                $this->add();
-                break;
-            case 'update':
-                $this->update();
-                break;
-            case 'delete':
-                $this->delete();
-                break;
             default:
                 Tool::alertBack('非法操作！');
         }
+    }
+
+    private function _showModule()
+    {
+        $this->_tpl->assign('frontadd', false);
+        $this->_tpl->assign('frontshow', false);
     }
 
     //前台新增
     private function frontadd()
     {
         if (isset($_POST['send'])) {
-            if (Validate::checkNull($_POST['level_name'])) Tool::alertBack('警告：等级名称不得为空');
-            if (Validate::checkLength($_POST['level_name'],2,'min')) Tool::alertBack('警告：等级名称不得小于2位');
-            if (Validate::checkLength($_POST['level_name'],20,'max')) Tool::alertBack('警告：等级名称不得大于20位');
-            if (Validate::checkLength($_POST['level_info'],255,'max')) Tool::alertBack('警告：描述不得大于255位');
-            $this->_model->level_name = $_POST['level_name'];
-            if ($this->_model->getOneLevel()) Tool::alertBack('警告：该等级名称已被占用');
-            $this->_model->level_info = $_POST['level_info'];
-            $this->_model->addLevel() ? Tool::alertLocation('恭喜你，新增等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，新增等级失败！');
+            if (Validate::checkNull($_POST['webname'])) Tool::alertBack('警告：网站名称不得为空');
+            if (Validate::checkLength($_POST['webname'],20,'max')) Tool::alertBack('警告：网站名称不得大于20位');
+            if (Validate::checkNull($_POST['weburl'])) Tool::alertBack('警告：网站地址不得为空');
+            if (Validate::checkLength($_POST['weburl'],100,'max')) Tool::alertBack('警告：网站地址不得大于100位');
+            if ($_POST['type'] == '2') {
+                if (Validate::checkNull($_POST['logourl'])) Tool::alertBack('警告：LOGO地址不得为空');
+                if (Validate::checkLength($_POST['logourl'],100,'max')) Tool::alertBack('警告：LOGO地址不得大于100位');
+            }
+            if (Validate::checkLength($_POST['user'],20,'max')) Tool::alertBack('警告：站长名字不得大于20位');
+            if (Validate::checkLength($_POST['code'],4,'equals')) Tool::alertBack('警告：验证码是4位');
+            if (Validate::checkEquals(strtolower($_POST['code']),$_SESSION['code'])) Tool::alertBack('警告：验证码不正确');
+
+            $this->_model->webname = $_POST['webname'];
+            $this->_model->weburl = $_POST['weburl'];
+            $this->_model->logourl = $_POST['logourl'];
+            $this->_model->user = $_POST['user'];
+            $this->_model->type = $_POST['type'];
+            $this->_model->state = $_POST['state'];
+            $this->_model->addLink() ? Tool::alertLocation('恭喜你，新增链接成功！','firendlink.php?action=frontshow') : Tool::alertBack('很遗憾，新增链接失败！');
         }
-        $this->_tpl->assign('show',false);
-        $this->_tpl->assign('add',true);
-        $this->_tpl->assign('update',false);
-        $this->_tpl->assign('title','新增等级');
+        $this->_showModule();
+        $this->_tpl->assign('frontadd', true);
     }
 
-/*
-    // 列表
-    private function show()
+    // 前台列表
+    private function frontshow()
     {
-        $this->_tpl->assign('show',true);
-        $this->_tpl->assign('add',false);
-        $this->_tpl->assign('update',false);
-        $this->_tpl->assign('title','等级列表');
-        $this->_tpl->assign('AllLevel',$this->_model->getAllLevel());
+        $this->_showModule();
+        $this->_tpl->assign('frontshow', true);
+
+        $_object = $this->_model->getAllTextLink();
+        $this->_tpl->assign('AllText',$_object);
+        $_object = $this->_model->getAllLogoLink();
+        $this->_tpl->assign('AllLogo',$_object);
     }
 
-    // 添加
-    private function add()
+    // 公开
+    public function index()
     {
-        if (isset($_POST['send'])) {
-            if (Validate::checkNull($_POST['level_name'])) Tool::alertBack('警告：等级名称不得为空');
-            if (Validate::checkLength($_POST['level_name'],2,'min')) Tool::alertBack('警告：等级名称不得小于2位');
-            if (Validate::checkLength($_POST['level_name'],20,'max')) Tool::alertBack('警告：等级名称不得大于20位');
-            if (Validate::checkLength($_POST['level_info'],255,'max')) Tool::alertBack('警告：描述不得大于255位');
-            $this->_model->level_name = $_POST['level_name'];
-            if ($this->_model->getOneLevel()) Tool::alertBack('警告：该等级名称已被占用');
-            $this->_model->level_info = $_POST['level_info'];
-            $this->_model->addLevel() ? Tool::alertLocation('恭喜你，新增等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，新增等级失败！');
-        }
-        $this->_tpl->assign('show',false);
-        $this->_tpl->assign('add',true);
-        $this->_tpl->assign('update',false);
-        $this->_tpl->assign('title','新增等级');
+        $this->text();
+        $this->logo();
     }
 
-    // 修改
-    private function update()
+    // text
+    private function text()
     {
-        if (isset($_POST['send'])) {
-            if (Validate::checkNull($_POST['level_name'])) Tool::alertBack('警告：等级名称不得为空');
-            if (Validate::checkLength($_POST['level_name'],2,'min')) Tool::alertBack('警告：等级名称不得小于2位');
-            if (Validate::checkLength($_POST['level_name'],20,'max')) Tool::alertBack('警告：等级名称不得大于20位');
-            if (Validate::checkLength($_POST['level_info'],255,'max')) Tool::alertBack('警告：描述不得大于255位');
-            $this->_model->id = $_POST['id'];
-            $this->_model->level_name = $_POST['level_name'];
-            $this->_model->level_info = $_POST['level_info'];
-            $this->_model->updateLevel() ? Tool::alertLocation('恭喜你，修改等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，修改等级失败！');
-        }
-        if (isset($_GET['id'])) {
-            $this->_model->id = $_GET['id'];
-            $_level = $this->_model->getOneLevel();
-            is_object($_level) ? true : Tool::alertBack('等级传值的ID有误！');
-            $this->_tpl->assign('id',$_level->id);
-            $this->_tpl->assign('level_name',$_level->level_name);
-            $this->_tpl->assign('level_info',$_level->level_info);
-            $this->_tpl->assign('show',false);
-            $this->_tpl->assign('add',false);
-            $this->_tpl->assign('update',true);
-            $this->_tpl->assign('title','修改等级');
-        } else {
-            Tool::alertBack('非法操作！');
-        }
+        $_object = $this->_model->getTwentyTextLink();
+        $this->_tpl->assign('text',$_object);
     }
 
-    // 删除
-    private function delete()
+    //logo
+    private function logo()
     {
-        if (isset($_GET['id'])) {
-            $this->_model->id = $_GET['id'];
-            $_manage = new ManageModel();
-            $_manage->level = $this->_model->id;
-            if ($_manage->getOneManage()) Tool::alertBack('警告：该等级已有管理员使用,无法删除');
-            $this->_model->deleteLevel() ? Tool::alertLocation('恭喜你，删除等级成功！','level.php?action=show') : Tool::alertBack('很遗憾，删除等级失败！');
-        } else {
-            Tool::alertBack('非法操作！');
-        }
-    }*/
+        $_object = $this->_model->getLineLogoLink();
+        $this->_tpl->assign('logo',$_object);
+    }
 }

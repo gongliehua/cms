@@ -46,6 +46,9 @@
 #list dl dd a:hover {
 	color: #f60;
 }
+#list span.red {
+	color: red;
+}
 #list p.none {
 	padding: 20px;
 	text-align: center;

@@ -1,7 +1,7 @@
 <?php
 
 // 前台缓存开关
-define('IS_CACHE', false);
+define('IS_CACHE', true);
 
 if (IS_CACHE && !$_cache->noCache()) {
 	ob_start();
@@ -22,3 +22,9 @@ if (IS_CACHE) {
 		$_tpl->assign('header', '<a href="register.php?action=reg" class="user">注册</a> <a href="register.php?action=login" class="user">登录</a>');
 	}
 }
+
+$_link = new FirendLinkAction($_tpl);
+$_link->index();
+
+$_tag = new TagAction($_tpl);
+$_tag->getTopFiveTag();

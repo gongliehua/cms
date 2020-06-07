@@ -19,6 +19,7 @@ class ContentModel extends Model {
     private $color;
     private $sort;
     private $readlimit;
+    private $inputkeyword;
     private $limit;
 
     // 拦截器
@@ -31,6 +32,147 @@ class ContentModel extends Model {
     public function __get($_key)
     {
         return $this->$_key;
+    }
+
+    // 安装标签搜索的文档列表的总记录
+    public function searchTagTotal()
+    {
+     $_sql = "SELECT 
+                      COUNT(*)
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.tag LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC ";
+      return parent::total($_sql);
+    }
+
+    // 安装标签搜索的文档列表
+    public function searchTag()
+    {
+     $_sql = "SELECT 
+                      c.id,
+                      c.title,
+                      c.keyword,
+                      c.nav,
+                      c.title,
+                      c.title t,
+                      c.attr,
+                      c.info,
+                      c.thumbnail,
+                      c.date,
+                      c.count,
+                      c.gold,
+                      n.nav_name
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.tag LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC 
+                      $this->limit";
+      return parent::all($_sql);
+    }
+
+    // 安装关键字搜索的文档列表的总记录
+    public function searchKeywordTotal()
+    {
+     $_sql = "SELECT 
+                      COUNT(*)
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.keyword LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC ";
+      return parent::total($_sql);
+    }
+
+    // 安装关键字搜索的文档列表
+    public function searchKeyword()
+    {
+     $_sql = "SELECT 
+                      c.id,
+                      c.title,
+                      c.keyword,
+                      c.nav,
+                      c.title,
+                      c.title t,
+                      c.attr,
+                      c.info,
+                      c.thumbnail,
+                      c.date,
+                      c.count,
+                      c.gold,
+                      n.nav_name
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.keyword LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC 
+                      $this->limit";
+      return parent::all($_sql);
+    }
+
+    // 安装标题搜索的文档列表的总记录
+    public function searchTitleTotal()
+    {
+     $_sql = "SELECT 
+                      COUNT(*)
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.title LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC ";
+      return parent::total($_sql);
+    }
+
+    // 安装标题搜索的文档列表
+    public function searchTitle()
+    {
+     $_sql = "SELECT 
+                      c.id,
+                      c.title,
+                      c.keyword,
+                      c.nav,
+                      c.title,
+                      c.title t,
+                      c.attr,
+                      c.info,
+                      c.thumbnail,
+                      c.date,
+                      c.count,
+                      c.gold,
+                      n.nav_name
+                FROM 
+                          cms_content c,
+                          cms_nav n
+                WHERE 
+                          c.nav = n.id 
+                      AND 
+                          c.title LIKE '%$this->inputkeyword%'
+                      ORDER BY
+                          c.date DESC 
+                      $this->limit";
+      return parent::all($_sql);
     }
 
     // 获取主栏目所有最新11条的最新文档
@@ -306,6 +448,7 @@ class ContentModel extends Model {
       $_sql = "SELECT 
                       c.id,
                       c.title,
+                      c.keyword,
                       c.nav,
                       c.title t,
                       c.attr,

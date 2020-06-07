@@ -1,0 +1,64 @@
+@charset "utf-8";
+#firendlink {
+	margin: 0 0 10px;
+	border: 1px solid #ccc;
+	padding: 0 0 10px 0;
+}
+#firendlink h2 {
+	border-bottom: none;
+	text-align: center;
+}
+#firendlink h2 a {
+	color: #360;
+	text-decoration: none;
+}
+#firendlink h2 a:hover {
+	color: #f60;
+	text-decoration: none;
+}
+#firendlink h3 {
+	padding: 20px;
+}
+#firendlink div {
+	padding: 0 20px;
+}
+#firendlink div a {
+	color: #666;
+	text-decoration: none;
+}
+#firendlink div a:hover {
+	color: #666;
+	text-decoration: underline;
+}
+#firendlink div img {
+	border: none;
+}
+#firendlink form {
+	padding: 20px 0px;
+}
+#firendlink form dl {
+	padding-left: 250px;
+}
+#firendlink form dl dd {
+	padding: 5px 0;
+}
+#firendlink form dl dd span.reg{
+	color: red;
+}
+#firendlink form dl dd input.text,#firendlink form dl dd select {
+	width: 220px;
+	height: 22px;
+	border: 1px solid #999;
+	background: #eee;
+}
+#firendlink form dl dd img.face {
+	margin: 0 0 0 60px;
+}
+#firendlink form dl dd img.code {
+	cursor: pointer;;
+	margin: 0 0 0 60px;
+}
+#firendlink form dl dd input.submit {
+	cursor: pointer;;
+	margin: 0 0 0 60px;
+}

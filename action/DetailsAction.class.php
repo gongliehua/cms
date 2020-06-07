@@ -23,6 +23,15 @@ class DetailsAction extends Action {
             $_content = $this->_model->getOneContent();
             $_comment = new CommentModel();
             $_comment->cid = $this->_model->id;
+
+            $_tarArr = explode(',',$_content->tag);
+            $_content->tag = '';
+            if (is_array($_tarArr)) {
+                foreach ($_tarArr as $_value) {
+                    $_content->tag .= ' ' . str_replace($_value, '<a href="search.php?type=3&inputkeyword='.$_value.'">'.$_value.'<a>', $_value);
+                }
+            }
+
             $this->_tpl->assign('id',$_content->id);
             $this->_tpl->assign('titlec',$_content->title);
             $this->_tpl->assign('date',$_content->date);
@@ -36,8 +45,8 @@ class DetailsAction extends Action {
             if (IS_CACHE) {
                 $this->_tpl->assign('count','<script type="text/javascript">getContentCount();</script>');
                 //$this->_tpl->assign('comment','<script type="text/javascript">getComment();</script>');
-            } else {
                 $this->_tpl->assign('comment', $_comment->getCommentToTal());
+            } else {
                 $this->_tpl->assign('count',$_content->count);
             }
             $_object = $_comment->getNewThreeComment();

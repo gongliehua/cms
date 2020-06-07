@@ -21,8 +21,8 @@ spl_autoload_register(function($_className){
     }
 });
 // 设置不缓存
-$_cache = new Cache(['code','chekup','static','upload','register','feedback','cast']);
+$_cache = new Cache(['code','chekup','static','upload','register','feedback','cast','firendlink','search']);
 // 实例化模板类
-$_tpl = new Templates();
+$_tpl = new Templates($_cache);
 // 初始化
 require 'common.inc.php';

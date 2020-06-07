@@ -4,7 +4,7 @@
     <script type="text/javascript" src="js/text_adver.js"></script>
 </div>
 <div id="header">
-    <h1><a href="#">票城web俱乐部</a></h1>
+    <h1><a href="/">票城web俱乐部</a></h1>
     <div class="adver">
         <script type="text/javascript" src="js/header_adver.js"></script>
     </div>
@@ -20,25 +20,21 @@
     </ul>
 </div>
 <div id="search">
-    <form action="">
-        <select name="search">
-            <option value="" selected>按标题</option>
-            <option value="">按关键字</option>
-            <option value="">全局查询</option>
+    <form action="search.php" method="get">
+        <select name="type">
+            <option value="1" selected>按标题</option>
+            <option value="2">按关键字</option>
+            <option value="3">按标签</option>
         </select>
-        <input type="text" name="keyword" class="text">
-        <input type="submit" name="send" class="submit" value="搜索">
+        <input type="text" name="inputkeyword" class="text">
+        <input type="submit" class="submit" value="搜索">
     </form>
     <strong>TAG标签：</strong>
     <ul>
-        <li><a href="#">基金(3)</a></li>
-        <li><a href="#">美女(1)</a></li>
-        <li><a href="#">白兰地(3)</a></li>
-        <li><a href="#">音乐(1)</a></li>
-        <li><a href="#">体育(1)</a></li>
-        <li><a href="#">直播(1)</a></li>
-        <li><a href="#">会晤(1)</a></li>
-        <li><a href="#">警方(1)</a></li>
-        <li><a href="#">广州(1)</a></li>
+        {if $TopFiveTag}
+        {foreach $TopFiveTag(key,value)}
+            <li><a href="search.php?type=3&inputkeyword={@value->tagname}">{@value->tagname}({@value->count})</a></li>
+        {/foreach}
+        {/if}
     </ul>
 </div>

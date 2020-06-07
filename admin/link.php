@@ -2,7 +2,7 @@
 
 require substr(dirname(__FILE__),0,-6).'/init.inc.php';
 Validate::checkSession();
-
-$_main = new MainAction($_tpl);
-$_main->_action();
-$_tpl->display('main.tpl');
+// 入口
+$_link = new LinkAction($_tpl);
+$_link->_action();
+$_tpl->display('link.tpl');

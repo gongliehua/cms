@@ -11,5 +11,10 @@
     <div class="map">
         管理首页 &gt;&gt; 后台首页
     </div>
+
+    <table cellspacing="0">
+    	<tr><th><strong>快捷操作</strong></th></tr>
+    	<tr><td><input type="button" value="清理缓存" onclick="location.href='main.php?action=delcache'">(缓存目录现有<strong>{$cacheNum}</strong>个文件)</td></tr>
+    </table>
 </body>
 </html>

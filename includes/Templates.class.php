@@ -8,8 +8,11 @@ class Templates {
     // 储存系统变量
     private $_config = [];
 
+    // 缓存对象
+    private $_cache = null;
+
     // 初始化
-    public function __construct()
+    public function __construct($_cache)
     {
         if (!is_dir(TPL_DIR) || !is_dir(TPL_C_DIR) || !is_dir(CACHE_DIR)) {
             exit('ERROR: 模板目录或编译目录或缓存目录不存在');
@@ -20,6 +23,7 @@ class Templates {
         foreach ($_tagLib as $value) {
             $this->_config["$value->name"] = $value->value;
         }
+        $this->_cache = $_cache;
     }
 
     // 注入变量
@@ -72,12 +76,14 @@ class Templates {
         }
         // 是否加入参数
         if (!empty($_SERVER['QUERY_STRING'])) {
-            $_file .= $_SERVER['QUERY_STRING'];
+            $_file_qeury .= $_SERVER['QUERY_STRING'];
+        } else {
+            $_file_query = $_file;
         }
         //编译文件
         $_parFile = TPL_C_DIR.md5($_file).$_file.'.php';
         //缓存文件
-        $_cacheFile = CACHE_DIR.md5($_tplFile).$_file.'.html';
+        $_cacheFile = CACHE_DIR.md5($_tplFile).$_file_query.'.html';
         
         //当编译文件不存在,或者模板文件修改过,则生成编译文件
         if (!file_exists($_parFile) || filemtime($_parFile) < filemtime($_tplFile)) {
