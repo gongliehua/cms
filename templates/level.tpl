@@ -29,6 +29,7 @@
             <th>编号</th>
             <th>等级名称</th>
             <th>描述</th>
+            <th>权限标识</th>
             <th>操作</th>
         </tr>
 
@@ -38,12 +39,13 @@
                 <td>{@value->id}</td>
                 <td>{@value->level_name}</td>
                 <td>{@value->level_info}</td>
+                <td>{@value->permission}</td>
                 <td><a href="level.php?action=update&id={@value->id}">编辑</a> <a href="level.php?action=delete&id={@value->id}" onclick="return confirm('您真的要删除这个等级吗？') ? true : false;">删除</a></td>
             </tr>
         {/foreach}
         {else}
             <tr>
-                <td colspan="4">对不起，没有任何数据</td>
+                <td colspan="5">对不起，没有任何数据</td>
             </tr>
         {/if}
 
@@ -55,6 +57,15 @@
         <table cellspacing="0" class="left">
             <tr><td>等级名称：<input type="text" name="level_name" class="text"> (* 等级名称不得小于2位,不得大于20位)</td></tr>
             <tr><td><textarea name="level_info"></textarea> (* 描述不得大于255位)</td></tr>
+             <tr>
+                <td style="padding-left: 60px;">
+                    {if $AllPermission}
+                    {foreach $AllPermission(key,value)}
+                    <input type="checkbox" name="permission[]" value="{@value->id}">{@value->name}
+                    {/foreach}
+                    {/if}
+                </td>
+            </tr>
             <tr><td><input type="submit" name="send" value="新增等级" onclick="return checkForm();" class="submit"> [ <a href="level.php?action=show">返回列表</a> ]</td></tr>
         </table>
     </form>
@@ -66,6 +77,15 @@
         <table cellspacing="0" class="left">
             <tr><td>等级名称：<input type="text" name="level_name" value="{$level_name}" class="text"> (* 等级名称不得小于2位,不得大于20位)</td></tr>
             <tr><td><textarea name="level_info">{$level_info}</textarea> (* 描述不得大于255位)</td></tr>
+            <tr>
+                <td style="padding-left: 60px;">
+                    {if $AllPermission}
+                    {foreach $AllPermission(key,value)}
+                    <input type="checkbox" name="permission[]" value="{@value->id}">{@value->name}
+                    {/foreach}
+                    {/if}
+                </td>
+            </tr>
             <tr><td><input type="submit" name="send" value="修改等级" onclick="return checkForm();" class="submit"> [ <a href="level.php?action=show">返回列表</a> ]</td></tr>
         </table>
     </form>

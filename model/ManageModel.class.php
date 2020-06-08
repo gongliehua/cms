@@ -50,7 +50,8 @@ class ManageModel extends Model {
     {
         $_sql = "SELECT 
                         m.admin_user,
-                        l.level_name 
+                        l.level_name,
+                        l.permission
                     FROM 
                         cms_manage m,
                         cms_level l 

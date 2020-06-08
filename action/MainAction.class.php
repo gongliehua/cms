@@ -29,6 +29,9 @@ class MainAction extends Action {
     // 清理缓存
     private function delCache()
     {
+        if (strstr($_SESSION['admin']['permission'],'2') === false) {
+            Tool::alertBack("警告：你没有权限操作");
+        }
         $_dir = ROOT_PATH.'/cache/';
         if (!$_dh = @opendir($_dir)) return;
         while (false !== ($_obj = readdir($_dh))) {

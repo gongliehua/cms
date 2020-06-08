@@ -4,6 +4,7 @@
 class LevelModel extends Model {
     private $id;
     private $level_name;
+    private $permission;
     private $level_info;
 
     // 拦截器
@@ -42,7 +43,8 @@ class LevelModel extends Model {
         $_sql = "SELECT 
                         id,
                         level_name,
-                        level_info
+                        level_info,
+                        permission
                     FROM 
                         cms_level 
                     ORDER BY
@@ -56,11 +58,13 @@ class LevelModel extends Model {
         $_sql = "INSERT INTO
                               cms_level (
                                           level_name,
-                                          level_info
+                                          level_info,
+                                          permission
                               )
                               VALUES (
                                       '$this->level_name',
-                                      '$this->level_info'
+                                      '$this->level_info',
+                                      '$this->permission'
                               )";
         return parent::aud($_sql);
     }
@@ -72,6 +76,7 @@ class LevelModel extends Model {
                         cms_level 
                     SET 
                         level_name='$this->level_name',
+                        permission='$this->permission',
                         level_info='$this->level_info' 
                     WHERE 
                         id='$this->id' 

@@ -28,3 +28,5 @@ $_link->index();
 
 $_tag = new TagAction($_tpl);
 $_tag->getTopFiveTag();
+
+$_tpl->assign('webname', WEBNAME);

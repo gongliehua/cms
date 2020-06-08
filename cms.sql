@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 07/06/2020 22:06:57
+ Date: 08/06/2020 11:08:28
 */
 
 SET NAMES utf8mb4;
@@ -142,18 +142,19 @@ CREATE TABLE `cms_level`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `level_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '名称',
   `level_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '说明',
+  `permission` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '权限',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '等级表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '等级表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cms_level
 -- ----------------------------
-INSERT INTO `cms_level` VALUES (1, '后台游客', '仅有访问后台权限');
-INSERT INTO `cms_level` VALUES (2, '会员专员', '仅有管理会员权限');
-INSERT INTO `cms_level` VALUES (3, '评论专员', '仅有评论权限');
-INSERT INTO `cms_level` VALUES (4, '发帖专员', '仅有发帖权限');
-INSERT INTO `cms_level` VALUES (5, '普通管理员', '暂无描述');
-INSERT INTO `cms_level` VALUES (6, '超级管理员', '暂无描述');
+INSERT INTO `cms_level` VALUES (1, '后台游客', '仅有访问后台权限', '2,1');
+INSERT INTO `cms_level` VALUES (2, '会员专员', '仅有管理会员权限', '2,1');
+INSERT INTO `cms_level` VALUES (3, '评论专员', '仅有评论权限', '2,1');
+INSERT INTO `cms_level` VALUES (4, '发帖专员', '仅有发帖权限', '2,1');
+INSERT INTO `cms_level` VALUES (5, '普通管理员', '暂无描述', '2,1');
+INSERT INTO `cms_level` VALUES (6, '超级管理员', '暂无描述', '2,1');
 
 -- ----------------------------
 -- Table structure for cms_link
@@ -199,7 +200,7 @@ CREATE TABLE `cms_manage`  (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES (1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 6, 24, '127.0.0.1', '2020-06-07 19:59:22', NULL);
+INSERT INTO `cms_manage` VALUES (1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 6, 26, '127.0.0.1', '2020-06-08 10:53:42', NULL);
 INSERT INTO `cms_manage` VALUES (2, 'user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 5, 0, '', NULL, NULL);
 INSERT INTO `cms_manage` VALUES (3, 'guest', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1, 0, '', NULL, NULL);
 
@@ -236,6 +237,23 @@ INSERT INTO `cms_nav` VALUES (14, '口红', '', 3, 14);
 INSERT INTO `cms_nav` VALUES (15, '小米', '', 4, 15);
 
 -- ----------------------------
+-- Table structure for cms_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_permission`;
+CREATE TABLE `cms_permission`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '权限名称',
+  `info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '权限描述',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '权限' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cms_permission
+-- ----------------------------
+INSERT INTO `cms_permission` VALUES (1, '后台登录', '111x');
+INSERT INTO `cms_permission` VALUES (2, '清理缓存', 'xxx');
+
+-- ----------------------------
 -- Table structure for cms_rotatain
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_rotatain`;
@@ -255,6 +273,29 @@ CREATE TABLE `cms_rotatain`  (
 -- ----------------------------
 INSERT INTO `cms_rotatain` VALUES (3, '/uploads/20200604/20200604205918798.gif', '', '哈哈哈哈', 1, '/details.php?id=1', '2020-06-04 20:59:23');
 INSERT INTO `cms_rotatain` VALUES (4, '/uploads/20200604/20200604213414798.png', '', '哈哈哈哈', 1, '/details.php?id=6', '2020-06-04 21:34:19');
+
+-- ----------------------------
+-- Table structure for cms_system
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_system`;
+CREATE TABLE `cms_system`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `webname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '网站名称',
+  `page_size` tinyint(2) NULL DEFAULT NULL COMMENT '普通分页的条数',
+  `article_size` tinyint(2) NULL DEFAULT NULL COMMENT '分页的条数',
+  `nav_size` tinyint(2) NULL DEFAULT NULL COMMENT '主导航个数',
+  `updir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '上传主目录',
+  `ro_time` tinyint(2) NULL DEFAULT NULL COMMENT '轮播器的速度',
+  `ro_num` tinyint(2) NULL DEFAULT NULL COMMENT '轮播器的个数',
+  `adver_text_num` tinyint(2) NULL DEFAULT NULL COMMENT '文字广告的个数',
+  `adver_pic_num` tinyint(2) NULL DEFAULT NULL COMMENT '图片广告的个数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统配置' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cms_system
+-- ----------------------------
+INSERT INTO `cms_system` VALUES (1, '飘城Web俱乐部', 10, 8, 10, '/uploads/', 3, 3, 5, 3);
 
 -- ----------------------------
 -- Table structure for cms_tag
